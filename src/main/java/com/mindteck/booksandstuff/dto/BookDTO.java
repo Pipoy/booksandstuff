@@ -7,8 +7,10 @@ public class BookDTO {
 	private Long id;
 
 	private String name;
-	private double price;
+	private String price;
 	private String Category;
+	private String description;
+
 
 
 	private String active;
@@ -33,11 +35,11 @@ public class BookDTO {
 		this.name = name;
 	}
 
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
@@ -87,5 +89,13 @@ public class BookDTO {
 
 	public void setPublisher(String publisher) {
 		Publisher = publisher;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

@@ -18,7 +18,7 @@ public class Item {
 	private Category category;
 
 	private String name;
-	private double price;
+	private Long price;
 
 
 
@@ -48,11 +48,11 @@ public class Item {
 		this.name = name;
 	}
 
-	public double getPrice() {
+	public Long getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 }
