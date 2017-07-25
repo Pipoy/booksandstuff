@@ -1,5 +1,8 @@
 package com.mindteck.booksandstuff.enitities.user;
 
+import com.mindteck.booksandstuff.enitities.book.Book;
+import com.mindteck.booksandstuff.enitities.cd.CD;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,22 +21,35 @@ public class Wish {
 	@JoinColumn(name="userId")
 	private User user;
 
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="bookId")
-//	private Book book;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="bookId")
+	private Book book;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="cdId")
+	private CD cd;
+
 
 
 	private Date wishAdded;
 	private String status;
 	private Date wishRemoved;
 
-//	public Book getBook() {
-//		return book;
-//	}
-//
-//	public void setBook(Book book) {
-//		this.book = book;
-//	}
+	public CD getCd() {
+		return cd;
+	}
+
+	public void setCd(CD cd) {
+		this.cd = cd;
+	}
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
 
 
 	public Long getId() {

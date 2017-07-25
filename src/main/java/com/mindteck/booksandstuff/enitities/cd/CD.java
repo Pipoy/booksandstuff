@@ -1,4 +1,4 @@
-package com.mindteck.booksandstuff.enitities.book;
+package com.mindteck.booksandstuff.enitities.cd;
 
 import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.enitities.user.Wish;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 @Entity
-public class Book extends Item {
+public class CD extends Item {
 
 	private String active;
 	private String description;
@@ -19,18 +19,19 @@ public class Book extends Item {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="Genre")
-	private Genre genre;
+	private MusicGenre musicGenre;
+
+
+	@ManyToOne
+	@JoinColumn(name = "Artist")
+	private Artist artist;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="Author")
-	private Author author;
+	@JoinColumn(name = "Producer")
+	private Producer producer;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Publisher")
-	private Publisher publisher;
-
-	@OneToMany(mappedBy = "book")
-	private List<Wish> wishes;
+	@OneToMany(mappedBy = "cd")
+	private List<Wish> wish;
 
 	public String getActive() {
 		return active;
@@ -56,27 +57,35 @@ public class Book extends Item {
 		this.isbn = isbn;
 	}
 
-	public Genre getGenre() {
-		return genre;
+	public MusicGenre getMusicGenre() {
+		return musicGenre;
 	}
 
-	public void setGenre(Genre genre) {
-		this.genre = genre;
+	public void setMusicGenre(MusicGenre musicGenre) {
+		this.musicGenre = musicGenre;
 	}
 
-	public Author getAuthor() {
-		return author;
+	public Artist getArtist() {
+		return artist;
 	}
 
-	public void setAuthor(Author author) {
-		this.author = author;
+	public void setArtist(Artist artist) {
+		this.artist = artist;
 	}
 
-	public Publisher getPublisher() {
-		return publisher;
+	public Producer getProducer() {
+		return producer;
 	}
 
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
+	public void setProducer(Producer producer) {
+		this.producer = producer;
+	}
+
+	public List<Wish> getWish() {
+		return wish;
+	}
+
+	public void setWish(List<Wish> wish) {
+		this.wish = wish;
 	}
 }
