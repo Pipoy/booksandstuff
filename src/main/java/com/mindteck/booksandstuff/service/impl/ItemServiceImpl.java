@@ -5,6 +5,7 @@ import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,11 +19,13 @@ public class ItemServiceImpl implements ItemService{
 	@Autowired
 	private ItemDAO itemDAO;
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Item> getAllItems() {
 		return itemDAO.getItems();
 	}
 
+	@Transactional
 	@Override
 	public List<Item> getByCategory(Long id) {
 		List<Item> items = itemDAO.getItemsByCategory(id);
