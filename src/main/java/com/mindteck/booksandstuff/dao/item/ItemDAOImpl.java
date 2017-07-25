@@ -32,4 +32,12 @@ public class ItemDAOImpl implements ItemDAO{
 		Item item = query.getSingleResult();
 		return item;
 	}
+
+	@Override
+	public List<Item> getItemsByCategory(Long categoryId) {
+		@SuppressWarnings("unchecked")
+		TypedQuery<Item> query = sessionFactory.getCurrentSession().createQuery("from Item where Category.id=:cid");
+		query.setParameter("cid", categoryId);
+		return query.getResultList();
+	}
 }

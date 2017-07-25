@@ -12,4 +12,6 @@ import java.util.List;
 public interface ItemDAO {
 	List<Item> getItems();
 	Item getItem(Long itemId);
+
+	List<Item> getItemsByCategory(Long categoryId);
 }
