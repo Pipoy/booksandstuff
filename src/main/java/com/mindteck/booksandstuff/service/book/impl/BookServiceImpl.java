@@ -10,6 +10,7 @@ import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.service.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	private CategoryDAO categoryDAO;
 
+	@Transactional
 	@Override
 	public void add(BookDTO bookDTO) {
 		Book book = new Book();
@@ -60,11 +62,13 @@ public class BookServiceImpl implements BookService {
 
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Book> getBooks() {
 		return bookDAO.getBooks();
 	}
 
+	@Transactional
 	@Override
 	public BookDTO getBook(Long id) {
 		Book book = bookDAO.getBook(id);
