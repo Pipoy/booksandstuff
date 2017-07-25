@@ -9,12 +9,14 @@ import com.mindteck.booksandstuff.dto.BookDTO;
 import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.service.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Philip Lozada on 7/25/2017.
  */
+@Service
 public class BookServiceImpl implements BookService {
 
 	@Autowired
