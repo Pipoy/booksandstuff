@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Created by Philip Lozada on 7/24/2017.
  */
+@Entity
 public class User {
 	@Id
 	@GeneratedValue

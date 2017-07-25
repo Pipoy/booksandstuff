@@ -2,6 +2,7 @@ package com.mindteck.booksandstuff.config;
 
 import com.mindteck.booksandstuff.enitities.user.Role;
 import com.mindteck.booksandstuff.enitities.user.User;
+import com.mindteck.booksandstuff.enitities.user.Wish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -57,7 +58,7 @@ public class AppConfig {
 
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setAnnotatedClasses(
-				 User.class, Role.class);
+				 User.class, Role.class, Wish.class);
 		// factoryBean.setAnnotatedClasses(Role.class);
 		return factoryBean;
 	}
