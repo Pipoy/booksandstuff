@@ -2,6 +2,14 @@ package com.mindteck.booksandstuff.config;
 
 import com.mindteck.booksandstuff.enitities.Category;
 import com.mindteck.booksandstuff.enitities.Item;
+import com.mindteck.booksandstuff.enitities.book.Author;
+import com.mindteck.booksandstuff.enitities.book.Book;
+import com.mindteck.booksandstuff.enitities.book.Genre;
+import com.mindteck.booksandstuff.enitities.book.Publisher;
+import com.mindteck.booksandstuff.enitities.cd.Artist;
+import com.mindteck.booksandstuff.enitities.cd.CD;
+import com.mindteck.booksandstuff.enitities.cd.MusicGenre;
+import com.mindteck.booksandstuff.enitities.cd.Producer;
 import com.mindteck.booksandstuff.enitities.user.Role;
 import com.mindteck.booksandstuff.enitities.user.User;
 import com.mindteck.booksandstuff.enitities.user.Wish;
@@ -60,7 +68,9 @@ public class AppConfig {
 
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setAnnotatedClasses(
-				 User.class, Role.class, Wish.class, Item.class, Category.class);
+				 User.class, Role.class, Wish.class, Item.class, Category.class,
+				Book.class, Author.class, Genre.class, Publisher.class,
+				CD.class, Artist.class, MusicGenre.class, Producer.class);
 		// factoryBean.setAnnotatedClasses(Role.class);
 		return factoryBean;
 	}

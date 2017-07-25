@@ -5,6 +5,7 @@ import com.mindteck.booksandstuff.enitities.user.Role;
 import com.mindteck.booksandstuff.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,7 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDAO roleDao;
 
+	@Transactional(readOnly = true)
 	@Override
 	public Map<String, String> getRoles() {
 		List<Role> roles = roleDao.getRoles();

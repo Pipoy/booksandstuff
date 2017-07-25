@@ -37,7 +37,7 @@ public class LoginController {
 
 			model.addAttribute("users", userService.getUsers());
 			model.addAttribute("roles", roleService.getRoles());*/
-			return "Menu";
+			return "menu";
 		}
 
 

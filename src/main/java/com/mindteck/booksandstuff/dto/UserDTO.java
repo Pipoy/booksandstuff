@@ -1,5 +1,6 @@
 package com.mindteck.booksandstuff.dto;
 
+import com.mindteck.booksandstuff.enitities.user.Wish;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.Size;
@@ -23,6 +24,15 @@ public class UserDTO {
 
 	private String Role;
 
+	private List<Wish> wishes;
+
+	public List<Wish> getWishes() {
+		return wishes;
+	}
+
+	public void setWishes(List<Wish> wishes) {
+		this.wishes = wishes;
+	}
 
 	public Long getId() {
 		return id;

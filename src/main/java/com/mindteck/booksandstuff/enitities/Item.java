@@ -16,8 +16,11 @@ public class Item {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Category category;
+
 	private String name;
 	private double price;
+
+
 
 
 
