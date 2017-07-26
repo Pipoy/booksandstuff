@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+//product or stock unit
 public class Item {
 
 	@Id
