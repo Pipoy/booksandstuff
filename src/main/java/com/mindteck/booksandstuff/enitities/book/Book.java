@@ -30,19 +30,13 @@ public class Book extends Item {
 	@JoinColumn(name = "Publisher")
 	private Publisher publisher;
 
-	@Transient
-	private MultipartFile productImage;
+//	@Transient
+//	private MultipartFile productImage;
 
 	@OneToMany(mappedBy = "book")
 	private List<Wish> wishes;
 
-	public MultipartFile getProductImage() {
-		return productImage;
-	}
 
-	public void setProductImage(MultipartFile productImage) {
-		this.productImage = productImage;
-	}
 
 	public List<Wish> getWishes() {
 		return wishes;

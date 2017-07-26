@@ -3,6 +3,7 @@ package com.mindteck.booksandstuff.controller;
 import com.mindteck.booksandstuff.enitities.user.User;
 import com.mindteck.booksandstuff.service.RoleService;
 import com.mindteck.booksandstuff.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+
 /**
  * Created by Philip Lozada on 7/24/2017.
  */
 
 @Controller
 public class LoginController {
+
+	private static final Logger logger = Logger.getLogger(LoginController.class);
 
 	@Autowired
 	private UserService userService;
@@ -29,8 +33,12 @@ public class LoginController {
 	@PostMapping("/login")
 	public String validateUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model, HttpSession session) {
 
-		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
+//		System.out.println(user.getEmail());
+//		System.out.println(user.getPassword());
+
+		logger.info(user.getEmail());
+		logger.debug(user.getPassword());
+
 		if (userService.validateUsers(user.getEmail(), user.getPassword())) {
 			session.setAttribute("userEmail", user.getEmail());
 			/*model.addAttribute("user", new User());
