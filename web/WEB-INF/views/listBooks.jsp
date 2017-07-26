@@ -31,9 +31,9 @@
                 </tr>
                 <c:forEach var="books" items="${booksList}">
 
-                    <%--<c:url var="updateLink" value="updateForm">--%>
-                        <%--<c:param name="bookId" value="${books.id}" />--%>
-                    <%--</c:url>--%>
+                    <c:url var="updateLink" value="updateForm">
+                        <c:param name="bookId" value="${books.id}" />
+                    </c:url>
 
 
                     <tr>
@@ -45,7 +45,7 @@
                         <td>${books.isbn}</td>
                         <td>${books.description}</td>
                         <td>${books.active}</td>
-                        <%--<td><a href="${updateLink}">Update</a></td>--%>
+                        <td><a href="${updateLink}">Update</a></td>
                     </tr>
                 </c:forEach>
                 <tr>

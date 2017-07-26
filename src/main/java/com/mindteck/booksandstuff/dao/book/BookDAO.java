@@ -1,6 +1,7 @@
 package com.mindteck.booksandstuff.dao.book;
 
 import com.mindteck.booksandstuff.enitities.book.Book;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -9,7 +10,9 @@ import java.util.List;
  */
 public interface BookDAO {
 	void add(Book book);
+
 	List<Book> getBooks();
 
 	Book getBook(Long id);
 }
+

@@ -19,7 +19,7 @@
         <div class="container">
             <h3>Book Form</h3>
             <fieldset>
-                <form:form action="saveBook" modelAttribute="bookShow" method="post">
+                <form:form action="saveBook" modelAttribute="bookShow" method="post"                    >
                     <form:hidden path="id" />
                     <table class="table">
                         <tr>
@@ -40,8 +40,6 @@
                         </tr>
                         <tr>
                             <td>Genre:</td>
-
-                                <%--<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">--%>
                             <td>
                                 <div>
                                     <form:select path="genre" items="${genresShow}"/>
@@ -90,6 +88,7 @@
                                     path="active" value="NO" />NO</td>
                         </tr>
                     </table>
+
                     <button type="submit" value="save" class="btn btn-primary">Save
                         Book</button>
                 </form:form>

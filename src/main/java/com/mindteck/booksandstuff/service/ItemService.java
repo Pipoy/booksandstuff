@@ -12,4 +12,6 @@ public interface ItemService {
 
 	List<Item> getByCategory(Long id);
 
+	Item getProductById(Long id);
+
 }

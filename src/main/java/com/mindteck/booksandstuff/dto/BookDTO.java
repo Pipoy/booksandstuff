@@ -8,16 +8,81 @@ public class BookDTO {
 
 	private String name;
 	private String price;
-	private String Category;
+
 	private String description;
 
 
 
 	private String active;
 	private String isbn;
-	private String Genre;
+
 	private String Author;
+	private String authorName;
+
+	private String Category;
+	private String categoryName;
+
+	private String Genre;
+	private String genreName;
+
 	private String Publisher;
+	private String publisherName;
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public String getGenreName() {
+		return genreName;
+	}
+
+	public void setGenreName(String genreName) {
+		this.genreName = genreName;
+	}
+
+	public String getPublisherName() {
+		return publisherName;
+	}
+
+	public void setPublisherName(String publisherName) {
+		this.publisherName = publisherName;
+	}
+
+	public String getAuthorName() {
+		return authorName;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	public String getGenre() {
+		return Genre;
+	}
+
+	public void setGenre(String genre) {
+		Genre = genre;
+	}
+
+	public String getPublisher() {
+		return Publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		Publisher = publisher;
+	}
+
+	public String getAuthor() {
+		return Author;
+	}
+
+	public void setAuthor(String author) {
+		Author = author;
+	}
 
 	public Long getId() {
 		return id;
@@ -67,29 +132,7 @@ public class BookDTO {
 		this.isbn = isbn;
 	}
 
-	public String getGenre() {
-		return Genre;
-	}
 
-	public void setGenre(String genre) {
-		Genre = genre;
-	}
-
-	public String getAuthor() {
-		return Author;
-	}
-
-	public void setAuthor(String author) {
-		Author = author;
-	}
-
-	public String getPublisher() {
-		return Publisher;
-	}
-
-	public void setPublisher(String publisher) {
-		Publisher = publisher;
-	}
 
 	public String getDescription() {
 		return description;

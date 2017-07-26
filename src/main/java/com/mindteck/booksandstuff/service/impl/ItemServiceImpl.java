@@ -32,4 +32,10 @@ public class ItemServiceImpl implements ItemService{
 
 		return items;
 	}
+
+	@Transactional
+	@Override
+	public Item getProductById(Long id) {
+		return itemDAO.getItem(id);
+	}
 }

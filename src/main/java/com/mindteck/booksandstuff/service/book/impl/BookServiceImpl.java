@@ -43,7 +43,7 @@ public class BookServiceImpl implements BookService {
 		book.setId(bookDTO.getId());
 		book.setName(bookDTO.getName());
 		book.setPrice(Long.parseLong(bookDTO.getPrice()));
-		book.setCategory(categoryDAO.getCategory(Long.parseLong(bookDTO.getCategory())));
+
 
 		book.setActive(bookDTO.getActive());
 		book.setDescription(bookDTO.getDescription());
@@ -51,7 +51,11 @@ public class BookServiceImpl implements BookService {
 
 		book.setAuthor(authorDAO.getAuthor(Long.parseLong(bookDTO.getAuthor())));
 		book.setPublisher(publisherDAO.getPublisher(Long.parseLong(bookDTO.getPublisher())));
+
 		book.setGenre(genreDAO.getGenre(Long.parseLong(bookDTO.getGenre())));
+
+
+		book.setCategory(categoryDAO.getCategory(Long.parseLong(bookDTO.getCategory())));
 
 
 
@@ -68,7 +72,7 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.getBooks();
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	@Override
 	public BookDTO getBook(Long id) {
 		Book book = bookDAO.getBook(id);
@@ -77,7 +81,6 @@ public class BookServiceImpl implements BookService {
 
 
 		bookDTO.setId(book.getId());
-		book.setCategory(book.getCategory());
 		bookDTO.setName(book.getName());
 		bookDTO.setPrice(book.getPrice().toString());
 
@@ -85,10 +88,24 @@ public class BookServiceImpl implements BookService {
 		bookDTO.setIsbn(book.getIsbn());
 		bookDTO.setDescription(book.getDescription());
 
-
 		bookDTO.setGenre(Long.toString(book.getGenre().getId()));
+		bookDTO.setGenreName(book.getGenre().getName());
+
 		bookDTO.setAuthor(Long.toString(book.getAuthor().getId()));
+		bookDTO.setAuthorName(book.getAuthor().getName());
+
 		bookDTO.setPublisher(Long.toString(book.getPublisher().getId()));
+		bookDTO.setPublisherName(book.getPublisher().getName());
+
+		bookDTO.setCategory(Long.toString(book.getCategory().getId()));
+		bookDTO.setCategoryName(book.getCategory().getName());
+
+
+
+
+//		bookDTO.setGenre(book.getGenre().getName());
+//		bookDTO.setAuthor(book.getAuthor().getName());
+//		bookDTO.setPublisher(book.getPublisher().getName());
 
 		System.out.println("publisher: " + book.getPublisher());
 		System.out.println("Author: " + book.getAuthor());
