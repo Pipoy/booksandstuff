@@ -1,5 +1,7 @@
 package com.mindteck.booksandstuff.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * Created by Philip Lozada on 7/25/2017.
  */
@@ -27,6 +29,16 @@ public class BookDTO {
 
 	private String Publisher;
 	private String publisherName;
+
+	private MultipartFile productImage;
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	public String getCategoryName() {
 		return categoryName;

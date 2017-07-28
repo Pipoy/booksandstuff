@@ -19,7 +19,7 @@
         <div class="container">
             <h3>Book Form</h3>
             <fieldset>
-                <form:form action="saveBook" modelAttribute="bookShow" method="post"                    >
+                <form:form action="saveBook" modelAttribute="bookShow" method="post" enctype="multipart/form-data">
                     <form:hidden path="id" />
                     <table class="table">
                         <tr>
@@ -87,7 +87,12 @@
                             <td><form:radiobutton path="active" value="YES" />YES <form:radiobutton
                                     path="active" value="NO" />NO</td>
                         </tr>
+
                     </table>
+                    <div class="form-group">
+                        <label class="control-label" for="productImage">Upload Image</label>
+                        <form:input id="productImage" path="productImage" type="file" class="form:input-large"/>
+                    </div>
 
                     <button type="submit" value="save" class="btn btn-primary">Save
                         Book</button>

@@ -30,13 +30,11 @@ public class Book extends Item {
 	@JoinColumn(name = "Publisher")
 	private Publisher publisher;
 
-//	@Transient
-//	private MultipartFile productImage;
+	@Transient
+	private MultipartFile productImage;
 
 	@OneToMany(mappedBy = "book")
 	private List<Wish> wishes;
-
-
 
 	public List<Wish> getWishes() {
 		return wishes;
@@ -93,4 +91,13 @@ public class Book extends Item {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
+
 }

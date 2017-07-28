@@ -1,19 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%--<%@ page language="java" contentType="text/html; charset=ISO-8859-1"--%>
+         <%--pageEncoding="ISO-8859-1"%>--%>
+<%--<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>--%>
+<%--<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>--%>
+<%--<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">--%>
+<%--<html>--%>
+    <%--<head>--%>
+        <%--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">--%>
 
-        <link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css"
-              rel="stylesheet">
-        <title>Insert title here</title>
+        <%--<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css"--%>
+              <%--rel="stylesheet">--%>
+        <%--<title>Insert title here</title>--%>
 
-    </head>
+    <%--</head>--%>
 
-    <body>
+    <%--<body>--%>
+        <%@include file="template/header.jsp"%>
+
 
         <div class="container">
 
@@ -25,7 +27,6 @@
                     <th>Genre</th>
                     <th>Publisher</th>
                     <th>Price</th>
-                    <th>ISBN</th>
                     <th>Description</th>
                     <th>In Stock?</th>
                 </tr>
@@ -42,7 +43,6 @@
                         <td>${books.genre.name}</td>
                         <td>${books.publisher.name}</td>
                         <td>${books.price}</td>
-                        <td>${books.isbn}</td>
                         <td>${books.description}</td>
                         <td>${books.active}</td>
                         <td><a href="${updateLink}">Update</a></td>
@@ -80,13 +80,14 @@
                     href="authorForm" class="btn btn-primary">Add Author</a>
 
             </div>
-        </div>
+        <%--</div>--%>
         <hr>
 
 
 
-        <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
-    </body>
+<%@include file="template/footer.jsp"%>
+        <%--<script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>--%>
+        <%--<script src="webjars/jquery/2.1.4/jquery.min.js"></script>--%>
+    <%--</body>--%>
 
-</html>
+<%--</html>--%>

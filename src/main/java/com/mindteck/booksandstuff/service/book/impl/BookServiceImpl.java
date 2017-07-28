@@ -100,6 +100,8 @@ public class BookServiceImpl implements BookService {
 		bookDTO.setCategory(Long.toString(book.getCategory().getId()));
 		bookDTO.setCategoryName(book.getCategory().getName());
 
+		bookDTO.setProductImage(book.getProductImage());
+
 
 
 

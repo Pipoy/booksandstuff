@@ -9,9 +9,9 @@ import com.mindteck.booksandstuff.service.book.AuthorService;
 import com.mindteck.booksandstuff.service.book.BookService;
 import com.mindteck.booksandstuff.service.book.GenreService;
 import com.mindteck.booksandstuff.service.book.PublisherService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -31,6 +33,9 @@ import java.util.List;
  */
 @Controller
 public class BookController {
+
+	private static final Logger logger = Logger.getLogger(LoginController.class);
+
 
 	@Autowired
 	private BookService bookService;
@@ -53,12 +58,12 @@ public class BookController {
 	private Path path;
 
 
-	@GetMapping("list")
+	@GetMapping("bookManager")
 	public String listBooks(Model model) {
 		List<Book> books = bookService.getBooks();
 		model.addAttribute("booksList", books);
 
-		return "listBooks";
+		return "bookManager";
 
 	}
 
@@ -92,16 +97,35 @@ public class BookController {
 			return "formBook";
 		}
 
+		bookService.add(book);
+
 		System.out.println("id:" + book.getId() +
 				"name: " + book.getName() +
 				"author: " + book.getAuthor() +
 				"publisher: " + book.getPublisher() +
 				"isbn" + book.getIsbn());
-		bookService.add(book);
+		MultipartFile productImage = book.getProductImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		path = Paths.get(rootDirectory + "\\resources\\images\\" + book.getId() + ".png");
+
+		if (productImage != null && !productImage.isEmpty()) {
+			try {
+				productImage.transferTo(new File(path.toString()));
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("Product image saving failed!,", e);
+
+
+			}
+		}
 
 
 
-		return "redirect:list";
+
+
+
+
+		return "redirect:bookManager";
 	}
 
 

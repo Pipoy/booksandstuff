@@ -83,6 +83,13 @@ public class AppConfig {
 		return transactionManager;
 	}
 
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+		resolver.setMaxUploadSize(1024000);
+		return resolver;
+	}
+
 
 
 }
