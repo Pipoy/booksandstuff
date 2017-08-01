@@ -12,7 +12,7 @@ public interface ArtistDAO {
 
 	List<Artist> getArtists();
 
-	Artist getCD(Long id);
+	Artist getArtist(Long id);
 
-	void addCD(Artist cd);
+	void add(Artist cd);
 }

@@ -15,7 +15,7 @@
 
     <%--<body>--%>
         <%@include file="template/header.jsp"%>
-<a href="<c:url value="/logout" />">Logout</a>
+<%--<a href="<c:url value="/logout" />">Logout</a>--%>
 
 
         <div class="container">
@@ -33,7 +33,7 @@
                 </tr>
                 <c:forEach var="books" items="${booksList}">
 
-                    <c:url var="updateLink" value="updateForm">
+                    <c:url var="updateLink" value="formBook.jsp">
                         <c:param name="bookId" value="${books.id}" />
                     </c:url>
 

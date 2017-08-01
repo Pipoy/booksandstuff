@@ -10,6 +10,10 @@ import com.mindteck.booksandstuff.enitities.cd.Artist;
 import com.mindteck.booksandstuff.enitities.cd.CD;
 import com.mindteck.booksandstuff.enitities.cd.MusicGenre;
 import com.mindteck.booksandstuff.enitities.cd.Producer;
+import com.mindteck.booksandstuff.enitities.games.Developer;
+import com.mindteck.booksandstuff.enitities.games.GameGenre;
+import com.mindteck.booksandstuff.enitities.games.Games;
+import com.mindteck.booksandstuff.enitities.games.Platform;
 import com.mindteck.booksandstuff.enitities.user.Role;
 import com.mindteck.booksandstuff.enitities.user.User;
 import com.mindteck.booksandstuff.enitities.user.Wish;
@@ -73,7 +77,8 @@ public class AppConfig {
 		factoryBean.setAnnotatedClasses(
 				 User.class, Role.class, Wish.class, Item.class, Category.class,
 				Book.class, Author.class, Genre.class, Publisher.class,
-				CD.class, Artist.class, MusicGenre.class, Producer.class);
+				CD.class, Artist.class, MusicGenre.class, Producer.class,
+				Games.class, GameGenre.class, Developer.class, Platform.class);
 		// factoryBean.setAnnotatedClasses(Role.class);
 		return factoryBean;
 	}

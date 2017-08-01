@@ -52,8 +52,8 @@ public class BookController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@Autowired
-	BookDAO bookDAO;
+//	@Autowired
+//	BookDAO bookDAO;
 
 	private Path path;
 

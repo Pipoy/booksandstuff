@@ -29,7 +29,7 @@ public class AuthorServiceImpl implements AuthorService{
 		author.setId(authorDTO.getId());
 		author.setName(authorDTO.getName());
 
-		authorDAO.add(author);
+		authorDAO.addAuthor(author);
 	}
 
 	@Transactional

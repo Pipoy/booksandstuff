@@ -15,7 +15,7 @@ public class CD extends Item {
 
 	private String active;
 	private String description;
-	private String isbn;
+
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="Genre")
@@ -49,13 +49,7 @@ public class CD extends Item {
 		this.description = description;
 	}
 
-	public String getIsbn() {
-		return isbn;
-	}
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
 
 	public MusicGenre getMusicGenre() {
 		return musicGenre;

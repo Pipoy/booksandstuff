@@ -29,7 +29,7 @@ public class ArtistDAOImpl implements ArtistDAO{
 	}
 
 	@Override
-	public Artist getCD(Long id) {
+	public Artist getArtist(Long id) {
 		@SuppressWarnings("unchecked")
 		TypedQuery<Artist> query = sessionFactory.getCurrentSession().createQuery("from Artist where id=:id");
 		query.setParameter("id", id);
@@ -39,7 +39,7 @@ public class ArtistDAOImpl implements ArtistDAO{
 	}
 
 	@Override
-	public void addCD(Artist artist) {
+	public void add(Artist artist) {
 		if(artist.getId() != null){
 			sessionFactory.getCurrentSession().saveOrUpdate(artist);
 		}else {
