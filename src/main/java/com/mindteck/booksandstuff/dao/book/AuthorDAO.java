@@ -11,5 +11,5 @@ public interface AuthorDAO {
 	List<Author> getAuthors();
 
 	Author getAuthor(Long id);
-	void add(Author author);
+	void addAuthor(Author author);
 }

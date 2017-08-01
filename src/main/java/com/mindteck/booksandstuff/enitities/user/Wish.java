@@ -2,6 +2,7 @@ package com.mindteck.booksandstuff.enitities.user;
 
 import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.enitities.cd.CD;
+import com.mindteck.booksandstuff.enitities.games.Games;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -29,11 +30,24 @@ public class Wish {
 	@JoinColumn(name="cdId")
 	private CD cd;
 
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="gameId")
+	private Games games;
+
+
 
 
 	private Date wishAdded;
 	private String status;
 	private Date wishRemoved;
+
+	public Games getGames() {
+		return games;
+	}
+
+	public void setGames(Games games) {
+		this.games = games;
+	}
 
 	public CD getCd() {
 		return cd;

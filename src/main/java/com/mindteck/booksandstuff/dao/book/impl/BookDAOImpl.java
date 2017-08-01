@@ -31,8 +31,6 @@ public class BookDAOImpl implements BookDAO {
 	public List<Book> getBooks() {
 		@SuppressWarnings("unchecked")
 		TypedQuery<Book> query = sessionFactory.getCurrentSession().createQuery("from Book where active=:active");
-//		query.setParameter("active", "yes");
-//		query.setParameter("active", "Yes");
 		query.setParameter("active", "YES");
 		return query.getResultList();
 	}

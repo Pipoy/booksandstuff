@@ -15,6 +15,7 @@
 
     <%--<body>--%>
         <%@include file="template/header.jsp"%>
+<a href="<c:url value="/logout" />">Logout</a>
 
 
         <div class="container">

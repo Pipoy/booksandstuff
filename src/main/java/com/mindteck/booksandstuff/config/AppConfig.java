@@ -32,11 +32,13 @@ import static org.hibernate.cfg.AvailableSettings.C3P0_MAX_STATEMENTS;
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScans(value = { @ComponentScan("com.mindteck.booksandstuff.dao"),
+@ComponentScans(value = {
+		@ComponentScan("com.mindteck.booksandstuff.dao"),
 		@ComponentScan("com.mindteck.booksandstuff.dao.impl"),
 		@ComponentScan("com.mindteck.booksandstuff.service"),
 		@ComponentScan("com.mindteck.booksandstuff.service.impl") })
 public class AppConfig {
+
 	@Autowired
 	private Environment env;
 
