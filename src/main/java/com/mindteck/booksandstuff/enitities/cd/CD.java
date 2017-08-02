@@ -2,6 +2,7 @@ package com.mindteck.booksandstuff.enitities.cd;
 
 import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.enitities.user.Wish;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.List;
@@ -29,6 +30,18 @@ public class CD extends Item {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Producer")
 	private Producer producer;
+
+
+	@Transient
+	private MultipartFile productImage;
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	@OneToMany(mappedBy = "cd")
 	private List<Wish> wish;

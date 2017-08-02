@@ -33,7 +33,7 @@
                 </tr>
                 <c:forEach var="books" items="${booksList}">
 
-                    <c:url var="updateLink" value="formBook.jsp">
+                    <c:url var="updateLink" value="updateForm">
                         <c:param name="bookId" value="${books.id}" />
                     </c:url>
 

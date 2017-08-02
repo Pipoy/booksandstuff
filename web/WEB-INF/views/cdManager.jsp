@@ -19,9 +19,9 @@
             <th>In Stock?</th>
         </tr>
         <c:forEach var="cds" items="${cdList}">
-            <%--<c:url var="updateLink" value="updateFormCD">--%>
-                <%--<c:param name="cdId" value="${cds.id}"--%>
-            <%--</c:url>--%>
+            <c:url var="updateLink" value="/updateFormCD">
+                <c:param name="cdId" value="${cds.id}"/>
+            </c:url>
             <tr>
                 <td>${cds.name}</td>
                 <td>${cds.artist.name}</td>
@@ -30,10 +30,15 @@
                 <td>${cds.price}</td>
                 <td>${cds.description}</td>
                 <td>${cds.active}</td>
+                <td><a href="${updateLink}">Update</a></td>
             </tr>
         </c:forEach>
 
     </table>
+    <div class="btn-group btn-group-justified">
+        <a href="/cdForm" class="btn btn-primary">Add CD</a>
+
+    </div>
+    <%@include file="template/footer.jsp"%>
 </div>
 
-<%@include file="template/footer.jsp"%>

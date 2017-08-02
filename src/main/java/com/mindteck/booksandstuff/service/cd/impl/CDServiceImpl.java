@@ -82,6 +82,7 @@ public class CDServiceImpl implements CDService {
 		cddto.setDescription(cd.getDescription());
 
 		cddto.setCategory(Long.toString(cd.getCategory().getId()));
+		cddto.setCategoryName(cd.getCategory().getName());
 
 		cddto.setArtist(Long.toString(cd.getArtist().getId()));
 		cddto.setArtistName(cd.getArtist().getName());
@@ -91,6 +92,8 @@ public class CDServiceImpl implements CDService {
 
 		cddto.setProducer(Long.toString(cd.getProducer().getId()));
 		cddto.setProducerName(cd.getProducer().getName());
+
+		cddto.setProductImage(cd.getProductImage());
 
 		return cddto;
 	}

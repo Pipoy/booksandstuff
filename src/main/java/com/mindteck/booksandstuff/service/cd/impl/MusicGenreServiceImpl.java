@@ -5,6 +5,7 @@ import com.mindteck.booksandstuff.enitities.cd.MusicGenre;
 import com.mindteck.booksandstuff.service.cd.MusicGenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ public class MusicGenreServiceImpl implements MusicGenreService {
 	@Autowired
 	private MusicGenreDAO musicGenreDAO;
 
+	@Transactional
 	@Override
 	public Map<String, String> getMusicGenres() {
 		List<MusicGenre> musicGenreList = musicGenreDAO.getMusicGenres();

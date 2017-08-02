@@ -5,6 +5,7 @@ import com.mindteck.booksandstuff.enitities.cd.Producer;
 import com.mindteck.booksandstuff.service.cd.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,7 @@ public class ProducerServiceImpl implements ProducerService {
 	@Autowired
 	private ProducerDAO producerDAO;
 
+	@Transactional
 	@Override
 	public Map<String, String> getProducers() {
 		List<Producer> producers = producerDAO.getProducets();

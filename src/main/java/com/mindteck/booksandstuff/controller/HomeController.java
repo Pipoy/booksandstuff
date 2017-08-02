@@ -1,10 +1,12 @@
 package com.mindteck.booksandstuff.controller;
 
 import com.mindteck.booksandstuff.dto.BookDTO;
+import com.mindteck.booksandstuff.dto.CD.CDDTO;
 import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.service.ItemService;
 import com.mindteck.booksandstuff.service.book.AuthorService;
 import com.mindteck.booksandstuff.service.book.BookService;
+import com.mindteck.booksandstuff.service.cd.CDService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,9 @@ public class HomeController {
 	private BookService bookService;
 
 	@Autowired
-	private AuthorService authorService;
+	private CDService cdService;
+
+
 
 
 
@@ -64,11 +68,20 @@ public class HomeController {
 			model.addAttribute("publisher", publisher);
 			model.addAttribute("genre", genre);
 			model.addAttribute("category", category);
+			return "viewBookDetail";
 
 		}
 
+		if (categoryId == 2) {
+			CDDTO cddto = cdService.getCD(Long.parseLong(productId));
+			model.addAttribute("cd", cddto);
+			return "viewCDDetail";
+		}
 
-		return "viewProduct";
+		return "items";
+
+
+
 	}
 
 }

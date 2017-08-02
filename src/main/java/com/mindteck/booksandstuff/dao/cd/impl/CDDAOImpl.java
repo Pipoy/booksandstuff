@@ -1,6 +1,7 @@
 package com.mindteck.booksandstuff.dao.cd.impl;
 
 import com.mindteck.booksandstuff.dao.cd.CDDAO;
+import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.enitities.cd.CD;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,11 @@ public class CDDAOImpl implements CDDAO {
 
 	@Override
 	public CD getCD(Long id) {
-		return null;
+		@SuppressWarnings("unchecked")
+		TypedQuery<CD> query = sessionFactory.getCurrentSession().createQuery("from CD where id=:id");
+		query.setParameter("id", id);
+		CD cd = query.getSingleResult();
+		return cd;
 	}
 
 }

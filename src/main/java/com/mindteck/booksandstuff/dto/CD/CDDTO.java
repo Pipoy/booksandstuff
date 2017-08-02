@@ -1,5 +1,7 @@
 package com.mindteck.booksandstuff.dto.CD;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * Created by Philip Lozada on 8/1/2017.
  */
@@ -22,6 +24,16 @@ public class CDDTO {
 
 	private String Category;
 	private String categoryName;
+
+	private MultipartFile productImage;
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	public Long getId() {
 		return id;
