@@ -30,6 +30,8 @@
                     <p><strong>Description</strong> : ${cd.description}</p>
 
                     <h4><strong>Price</strong> : ${cd.price} USD</h4>
+                    <button type="button" class="btn btn-secondary">Back</button>
+                    <button type="button" class="btn btn-warning">Add to Cart</button>
 
                 </div>
             </div>
