@@ -1,7 +1,6 @@
 package com.mindteck.booksandstuff.service.games.impl;
 
 import com.mindteck.booksandstuff.dao.games.DeveloperDAO;
-import com.mindteck.booksandstuff.dto.CD.ArtistDTO;
 import com.mindteck.booksandstuff.dto.Games.DeveloperDTO;
 import com.mindteck.booksandstuff.enitities.games.Developer;
 import com.mindteck.booksandstuff.service.games.DeveloperService;
