@@ -34,7 +34,7 @@ public class DeveloperServiceImpl implements DeveloperService{
 
 	@Transactional
 	@Override
-	public DeveloperDTO getArtist(String id) {
+	public DeveloperDTO getDeveloper(String id) {
 		Developer developer = developerDAO.getDeveloper(Long.parseLong(id));
 		DeveloperDTO developerDTO = new DeveloperDTO();
 
@@ -46,7 +46,7 @@ public class DeveloperServiceImpl implements DeveloperService{
 
 	@Transactional(readOnly = true)
 	@Override
-	public Map<String, String> getArtists() {
+	public Map<String, String> getDevelopers() {
 		List<Developer> developers = developerDAO.getDevelopers();
 		Map<String, String> developerMap = new HashMap<>();
 		for (Developer developer : developers) {

@@ -11,6 +11,6 @@ import java.util.Map;
 public interface DeveloperService {
 	void add(DeveloperDTO developerDTO);
 
-	DeveloperDTO getArtist(String id);
-	Map<String, String> getArtists();
+	DeveloperDTO getDeveloper(String id);
+	Map<String, String> getDevelopers();
 }
