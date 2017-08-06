@@ -18,17 +18,22 @@
             <th>Description</th>
         </tr>
         <c:forEach var="games" items="${gameList}">
+            <c:url var="updateLink" value="/updateFormGames">
+                <c:param name="gameId" value="${games.id}"/>
+            </c:url>
             <tr>
                 <td>${games.name}</td>
                 <td>${games.developer.name}</td>
                 <td>${games.gameGenre.name}</td>
+                <td>${games.platform.name}</td>
                 <td>${games.price}</td>
                 <td>${games.description}</td>
+                <td><a href="${updateLink}">Update</a></td>
             </tr>
         </c:forEach>
     </table>
     <div class="btn-group btn-group-justified">
-        <a href="/cdForm" class="btn btn-primary">Add Games</a>
+        <a href="<c:url value="/gameForm"/>" class="btn btn-primary">Add Games</a>
 
     </div>
 

@@ -67,7 +67,7 @@ public class GameServiceImpl implements GameService {
 	@Transactional(readOnly = true)
 	@Override
 	public GamesDTO getGame(Long id) {
-		Games games = new Games();
+		Games games = gamesDAO.getGame(id);
 
 		GamesDTO gamesDTO = new GamesDTO();
 
@@ -83,6 +83,14 @@ public class GameServiceImpl implements GameService {
 
 		gamesDTO.setDeveloper(Long.toString(games.getDeveloper().getId()));
 		gamesDTO.setDeveloperName(games.getDeveloper().getName());
+
+		gamesDTO.setPlatform(Long.toString(games.getPlatform().getId()));
+		gamesDTO.setPlatformName(games.getPlatform().getName());
+
+		gamesDTO.setGameGenre(Long.toString(games.getGameGenre().getId()));
+		gamesDTO.setGameGenreName(games.getGameGenre().getName());
+
+		gamesDTO.setProductImage(games.getProductImage());
 
 
 		return gamesDTO;

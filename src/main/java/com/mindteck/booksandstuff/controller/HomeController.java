@@ -2,11 +2,13 @@ package com.mindteck.booksandstuff.controller;
 
 import com.mindteck.booksandstuff.dto.BookDTO;
 import com.mindteck.booksandstuff.dto.CD.CDDTO;
+import com.mindteck.booksandstuff.dto.Games.GamesDTO;
 import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.service.ItemService;
 import com.mindteck.booksandstuff.service.book.AuthorService;
 import com.mindteck.booksandstuff.service.book.BookService;
 import com.mindteck.booksandstuff.service.cd.CDService;
+import com.mindteck.booksandstuff.service.games.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,9 @@ public class HomeController {
 
 	@Autowired
 	private BookService bookService;
+
+	@Autowired
+	private GameService gameService;
 
 	@Autowired
 	private CDService cdService;
@@ -76,6 +81,12 @@ public class HomeController {
 			CDDTO cddto = cdService.getCD(Long.parseLong(productId));
 			model.addAttribute("cd", cddto);
 			return "viewCDDetail";
+		}
+
+		if (categoryId == 3) {
+			GamesDTO gamesDTO = gameService.getGame(Long.parseLong(productId));
+			model.addAttribute("games", gamesDTO);
+			return "viewGameDetail";
 		}
 
 		return "items";

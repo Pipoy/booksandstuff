@@ -1,5 +1,7 @@
 package com.mindteck.booksandstuff.dto.Games;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * Created by Philip Lozada on 8/1/2017.
  */
@@ -24,7 +26,15 @@ public class GamesDTO {
 	private String Developer;
 	private String developerName;
 
+	private MultipartFile productImage;
 
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	public Long getId() {
 		return id;

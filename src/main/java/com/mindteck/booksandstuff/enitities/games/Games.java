@@ -1,11 +1,9 @@
 package com.mindteck.booksandstuff.enitities.games;
 
 import com.mindteck.booksandstuff.enitities.Item;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 
 @Entity
@@ -27,6 +25,17 @@ public class Games extends Item {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="Developer")
 	private Developer developer;
+
+	@Transient
+	private MultipartFile productImage;
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	public String getActive() {
 		return active;

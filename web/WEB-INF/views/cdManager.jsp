@@ -36,7 +36,7 @@
 
     </table>
     <div class="btn-group btn-group-justified">
-        <a href="/cdForm" class="btn btn-primary">Add CD</a>
+        <a href="<c:url value="/cdForm"/>" class="btn btn-primary">Add CD</a>
 
     </div>
     <%@include file="template/footer.jsp"%>
