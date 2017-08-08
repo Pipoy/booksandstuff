@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +25,7 @@ import java.util.List;
  * Created by Philip Lozada on 8/1/2017.
  */
 @Controller
+@RequestMapping("/admin/cdManager")
 public class CDController {
 
 	@Autowired
@@ -49,7 +47,7 @@ public class CDController {
 	private Path path;
 
 
-	@GetMapping("cdManager")
+	@GetMapping("/")
 	public String listCDs(Model model) {
 		List<CD> cds = cdService.getCDs();
 		model.addAttribute("cdList", cds);
@@ -101,7 +99,7 @@ public class CDController {
 			}
 		}
 
-		return "redirect:cdManager";
+		return "redirect:/admin/cdManager/";
 	}
 
 	@GetMapping("updateFormCD")

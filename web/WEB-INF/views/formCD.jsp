@@ -8,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@include file="template/header.jsp"%>
+<style type="text/css"> .error {color: red;} </style>
 <div class="container">
     <fieldset>
         <form:form action="saveCD" modelAttribute="cds" method="post" enctype="multipart/form-data">
@@ -15,7 +16,10 @@
             <table class="table">
                 <tr>
                     <td>CD name:</td>
-                    <td><form:input path="name"/></td>
+                    <td>
+                        <form:input path="name"/>
+                        <form:errors path="name" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td>Category</td>
@@ -35,7 +39,11 @@
                 </tr>
                 <tr>
                     <td>Price:</td>
-                    <td><form:input path="price"/></td>
+                    <td>
+                        <form:input path="price" errors="alert alert-warning"/>
+                        <form:errors path="price" cssClass="error" />
+                    </td>
+
                 </tr>
                 <tr>
                     <td>Description:</td>

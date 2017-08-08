@@ -14,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +29,7 @@ import java.util.List;
  * Created by Philip Lozada on 7/25/2017.
  */
 @Controller
+@RequestMapping("/admin/bookManager")
 public class BookController {
 
 	private static final Logger logger = Logger.getLogger(LoginController.class);
@@ -58,7 +56,7 @@ public class BookController {
 	private Path path;
 
 
-	@GetMapping("bookManager")
+	@GetMapping("/")
 	public String listBooks(Model model) {
 		List<Book> books = bookService.getBooks();
 		model.addAttribute("booksList", books);
@@ -67,7 +65,7 @@ public class BookController {
 
 	}
 
-	@GetMapping("bookForm")
+	@GetMapping("/bookForm")
 	public String showBookForm(Model model) {
 		Book book1 = new Book();
 
@@ -121,15 +119,11 @@ public class BookController {
 
 
 
-
-
-
-
-		return "redirect:bookManager";
+		return "redirect:/admin/bookManager/";
 	}
 
 
-	@GetMapping("updateForm")
+	@GetMapping("/updateFormBook")
 	public String updateForm(@RequestParam("bookId") String theId, Model model) {
 
 		BookDTO book = bookService.getBook(Long.parseLong(theId));

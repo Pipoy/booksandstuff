@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +26,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping("/admin/gamesManager")
 public class GamesController {
 
 	@Autowired
@@ -43,24 +41,19 @@ public class GamesController {
 	@Autowired
 	private CategoryService categoryService;
 
-	private Path path;
-
-
-
-
 	@Autowired
 	private PlatformService platformService;
 
 
-	@GetMapping("gamesManager")
+	@GetMapping("/")
 	public String listGames(Model model) {
 		List<Games> games = gameService.getGames();
 		model.addAttribute("gameList", games);
 		return "gamesManager";
 	}
 
-	@GetMapping("gameForm")
-	public String showBookForm(Model model){
+	@GetMapping("/gameForm")
+	public String showGamesForm(Model model){
 		Games game = new Games();
 
 		model.addAttribute("game", game);
@@ -86,7 +79,7 @@ public class GamesController {
 
 		MultipartFile gameImage = gamesDTO.getProductImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		path = Paths.get(rootDirectory + "\\resources\\images\\" + gamesDTO.getId() + ".png");
+		Path path = Paths.get(rootDirectory + "\\resources\\images\\" + gamesDTO.getId() + ".png");
 
 		if (gameImage != null && !gameImage.isEmpty()) {
 			try {
@@ -99,14 +92,14 @@ public class GamesController {
 		}
 
 
-		return "redirect:gamesManager";
+		return "redirect:/admin/gamesManager/";
 	}
 
-	@GetMapping("updateFormGames")
+	@GetMapping("/updateFormGames")
 	public String updateFormGames(@RequestParam("gameId") String id, Model model) {
 		GamesDTO gamesDTO = gameService.getGame(Long.parseLong(id));
 
-		model.addAttribute("games", gamesDTO);
+		model.addAttribute("game", gamesDTO);
 		model.addAttribute("developer", developerService.getDevelopers());
 		model.addAttribute("gameGenre", gameGenreService.getGameGenres());
 		model.addAttribute("category", categoryService.getCategories());

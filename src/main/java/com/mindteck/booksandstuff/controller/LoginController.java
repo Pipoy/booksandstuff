@@ -40,6 +40,7 @@ public class LoginController {
 
 		if (userService.validateUsers(user.getEmail(), user.getPassword())) {
 			session.setAttribute("userEmail", user.getEmail());
+
 			/*model.addAttribute("user", new User());
 
 			model.addAttribute("users", userService.getUsers());

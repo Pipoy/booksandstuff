@@ -2,14 +2,22 @@ package com.mindteck.booksandstuff.dto.CD;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 /**
  * Created by Philip Lozada on 8/1/2017.
  */
 public class CDDTO {
 
 	private Long id;
+
+	@Size(max = 20, min = 3, message = "{user.name.invalid}")
 	private String name;
+
+	@Min(value = 0,message = "{price.invalid}")
 	private String price;
+
 	private String description;
 	private String active;
 

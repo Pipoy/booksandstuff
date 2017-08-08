@@ -33,7 +33,7 @@
                 </tr>
                 <c:forEach var="books" items="${booksList}">
 
-                    <c:url var="updateLink" value="updateForm">
+                    <c:url var="updateLink" value="/admin/bookManager/updateFormBook">
                         <c:param name="bookId" value="${books.id}" />
                     </c:url>
 
@@ -68,9 +68,9 @@
 
                     <div class="btn-group btn-group-justified">
 
-                        <a href="addUser" class="btn btn-info">User Registration</a> <a
-                            href="getRole" class="btn btn-info">Manage Roles</a> <a
-                            href="list" class="btn btn-info">Book Manager</a>
+                        <%--<a href="addUser" class="btn btn-info">User Registration</a> <a--%>
+                            <%--href="getRole" class="btn btn-info">Manage Roles</a> <a--%>
+                            <%--href="list" class="btn btn-info">Book Manager</a>--%>
 
                     </div>
                     <h2>Book Manager</h2>

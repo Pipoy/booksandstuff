@@ -19,7 +19,7 @@
             <th>In Stock?</th>
         </tr>
         <c:forEach var="cds" items="${cdList}">
-            <c:url var="updateLink" value="/updateFormCD">
+            <c:url var="updateLink" value="/admin/cdManager/updateFormCD">
                 <c:param name="cdId" value="${cds.id}"/>
             </c:url>
             <tr>
@@ -36,7 +36,7 @@
 
     </table>
     <div class="btn-group btn-group-justified">
-        <a href="<c:url value="/cdForm"/>" class="btn btn-primary">Add CD</a>
+        <a href="<c:url value="/admin/cdManager/cdForm"/>" class="btn btn-primary">Add CD</a>
 
     </div>
     <%@include file="template/footer.jsp"%>

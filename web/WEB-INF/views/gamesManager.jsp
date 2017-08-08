@@ -18,7 +18,7 @@
             <th>Description</th>
         </tr>
         <c:forEach var="games" items="${gameList}">
-            <c:url var="updateLink" value="/updateFormGames">
+            <c:url var="updateLink" value="/admin/gamesManager/updateFormGames">
                 <c:param name="gameId" value="${games.id}"/>
             </c:url>
             <tr>
@@ -33,7 +33,7 @@
         </c:forEach>
     </table>
     <div class="btn-group btn-group-justified">
-        <a href="<c:url value="/gameForm"/>" class="btn btn-primary">Add Games</a>
+        <a href="<c:url value="/admin/gamesManager/gameForm"/>" class="btn btn-primary">Add Games</a>
 
     </div>
 

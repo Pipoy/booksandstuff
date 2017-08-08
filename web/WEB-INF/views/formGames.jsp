@@ -10,7 +10,7 @@
 <%@include file="template/header.jsp"%>
 <div class="container">
     <fieldset>
-        <form:form action="saveGame" modelAttribute="games" method="post" enctype="multipart/form-data">
+        <form:form action="saveGame" modelAttribute="game" method="post" enctype="multipart/form-data">
             <form:hidden path="id"/>
             <table class="table">
                 <tr>
