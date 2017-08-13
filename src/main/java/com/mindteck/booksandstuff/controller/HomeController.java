@@ -4,6 +4,9 @@ import com.mindteck.booksandstuff.dto.BookDTO;
 import com.mindteck.booksandstuff.dto.CD.CDDTO;
 import com.mindteck.booksandstuff.dto.Games.GamesDTO;
 import com.mindteck.booksandstuff.enitities.Item;
+import com.mindteck.booksandstuff.enitities.book.Book;
+import com.mindteck.booksandstuff.enitities.cd.CD;
+import com.mindteck.booksandstuff.enitities.games.Games;
 import com.mindteck.booksandstuff.service.ItemService;
 import com.mindteck.booksandstuff.service.book.AuthorService;
 import com.mindteck.booksandstuff.service.book.BookService;
@@ -39,11 +42,6 @@ public class HomeController {
 
 
 
-
-
-
-
-
 	@GetMapping("/home")
 	public String home() {
 		return "home";
@@ -74,7 +72,6 @@ public class HomeController {
 			model.addAttribute("genre", genre);
 			model.addAttribute("category", category);
 			return "viewBookDetail";
-
 		}
 
 		if (categoryId == 2) {
@@ -91,8 +88,35 @@ public class HomeController {
 
 		return "items";
 
-
-
 	}
+
+	@GetMapping("/items/cds")
+	public String viewCDs(Model model) {
+
+		List<CD> cds = cdService.getCDs();
+		model.addAttribute("cdList", cds);
+
+		return "itemsCD";
+	}
+
+	@GetMapping("/items/books")
+	public String viewBooks(Model model) {
+
+		List<Book> books = bookService.getBooks();
+		model.addAttribute("bookList", books);
+
+		return "itemsBook";
+	}
+
+	@GetMapping("/items/games")
+	public String viewGames(Model model) {
+
+		List<Games> games = gameService.getGames();
+		model.addAttribute("gameList", games);
+
+		return "itemsGames";
+	}
+
+
 
 }

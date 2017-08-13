@@ -31,13 +31,14 @@ public class UserServiceImpl implements UserService{
 	public void add(UserDTO userDTO) {
 		System.out.println("Inside add userdto");
 		User user = new User();
-		if(userDTO.getId()!= null)
+		//if(userDTO.getId()!= null) {
 			user.setId(userDTO.getId());
 
-		user.setEmail(userDTO.getEmail());
-		user.setName(userDTO.getName());
-		user.setPassword(userDTO.getPassword());
-		user.setRole(roleDao.getRole(Long.parseLong(userDTO.getRole())));
+			user.setEmail(userDTO.getEmail());
+			user.setName(userDTO.getName());
+			user.setPassword(userDTO.getPassword());
+			user.setRole(roleDao.getRole(Long.parseLong(userDTO.getRole())));
+		//}
 
 
 		userDao.add(user);
@@ -64,10 +65,12 @@ public class UserServiceImpl implements UserService{
 		userDto.setId(user.getId());
 		userDto.setName(user.getName());
 		userDto.setEmail(user.getEmail());
-		userDto.setRole(Integer.toString(user.getRole().getId()));
+		userDto.setRole(Long.toString(user.getRole().getId()));
 		userDto.setPassword(user.getPassword());
 		return userDto;
 	}
+
+
 
 	@Transactional
 	@Override
@@ -79,5 +82,14 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Role getRole(String id) {
 		return userDao.getRole(id);
+	}
+
+
+
+	@Transactional(readOnly = true)
+	@Override
+	public User getUserByEmail(String email) {
+		User user = userDao.getUserByEmail(email);
+		return user;
 	}
 }

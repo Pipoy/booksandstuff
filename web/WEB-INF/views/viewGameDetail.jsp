@@ -27,7 +27,7 @@
                 <p><strong>Description</strong> : ${games.description}</p>
 
                 <h4><strong>Price</strong> : ${games.price} USD</h4>
-                <button type="button" class="btn btn-secondary">Back</button>
+                <a class="btn btn-default" href="<c:url value="/items/games"/>">Back</a>
                 <button type="button" class="btn btn-warning">Add to Cart</button>
             </div>
         </div>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
@@ -57,11 +58,16 @@ public class BookController {
 
 
 	@GetMapping("/")
-	public String listBooks(Model model) {
+	public String listBooks(Model model, HttpSession session) {
 		List<Book> books = bookService.getBooks();
 		model.addAttribute("booksList", books);
 
-		return "bookManager";
+		Long roleId = (Long) session.getAttribute("userRoleId");
+		if (roleId == 1) {
+			return "bookManager";
+		}else {
+			return "redirect:/";
+		}
 
 	}
 

@@ -23,10 +23,10 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void add(User user) {
-		if(user.getId()==null)
-			sessionFactory.getCurrentSession().save(user);
-		else
-			sessionFactory.getCurrentSession().merge(user);
+		if(user.getId()!=null){
+			sessionFactory.getCurrentSession().save(user);}
+		else{
+			sessionFactory.getCurrentSession().merge(user);}
 
 
 	}
@@ -52,6 +52,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUser(Long id) {
+		@SuppressWarnings("unchecked")
 		TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where id=:id");
 		query.setParameter("id", id);
 		User user = query.getSingleResult();
@@ -72,5 +73,15 @@ public class UserDAOImpl implements UserDAO {
 	public Role getRole(String id) {
 		User user = sessionFactory.getCurrentSession().get(User.class, Long.parseLong(id));
 		return  user.getRole();
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		@SuppressWarnings("unchecked")
+		TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where email=:email");
+		query.setParameter("email", email);
+		User user = query.getSingleResult();
+
+		return user;
 	}
 }

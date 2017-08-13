@@ -16,6 +16,8 @@ public interface UserDAO {
 	boolean validateUser(String email, String password);
 	User getUser(Long id);
 
+	User getUserByEmail(String email);
+
 
 	Role getRole(String email, String password);
 	Role getRole(String id);

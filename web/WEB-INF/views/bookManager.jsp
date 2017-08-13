@@ -37,7 +37,6 @@
                         <c:param name="bookId" value="${books.id}" />
                     </c:url>
 
-
                     <tr>
                         <td>${books.name}</td>
                         <td>${books.author.name}</td>
@@ -58,7 +57,6 @@
                             value="Add Book"
                             onclick="window.location.href='authorForm'; return false;">Add
                             Author</button></td> -->
-
                 </tr>
                 <tr>
 

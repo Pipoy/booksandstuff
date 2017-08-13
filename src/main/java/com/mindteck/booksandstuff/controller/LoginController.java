@@ -30,7 +30,10 @@ public class LoginController {
 	private RoleService roleService;
 
 	@PostMapping("/login")
-	public String validateUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model, HttpSession session) {
+	public String validateUser(@ModelAttribute("user") @Valid User user,
+	                           BindingResult result,
+	                           Model model,
+	                           HttpSession session) {
 
 //		System.out.println(user.getEmail());
 //		System.out.println(user.getPassword());
@@ -38,8 +41,13 @@ public class LoginController {
 		logger.info(user.getEmail());
 		logger.debug(user.getPassword());
 
+
 		if (userService.validateUsers(user.getEmail(), user.getPassword())) {
 			session.setAttribute("userEmail", user.getEmail());
+
+			User usr = userService.getUserByEmail(user.getEmail());
+
+			session.setAttribute("userRoleId", usr.getRole().getId());
 
 			/*model.addAttribute("user", new User());
 

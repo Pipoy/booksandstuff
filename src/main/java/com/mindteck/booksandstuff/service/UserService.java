@@ -16,6 +16,8 @@ public interface UserService {
 	boolean validateUsers(String email, String password);
 	UserDTO getUser(String id);
 
+	User getUserByEmail(String email);
+
 
 	Role getRole(String email, String password);
 	Role getRole(String id);
