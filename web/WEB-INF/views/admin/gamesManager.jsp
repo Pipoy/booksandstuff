@@ -5,7 +5,7 @@
   Time: 4:07 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@include file="template/header.jsp"%>
+<%@include file="../registeredUser/header.jsp"%>
 <div class="container">
     <h1>Games Manager</h1>
     <table class="table">
@@ -37,5 +37,5 @@
 
     </div>
 
-    <%@include file="template/footer.jsp"%>
+    <%@include file="../registeredUser/footer.jsp"%>
 </div>

@@ -38,22 +38,27 @@ public class LoginController {
 //		System.out.println(user.getEmail());
 //		System.out.println(user.getPassword());
 
+		if (result.hasErrors()) {
+			return "redirect:/";
+		}
+
 		logger.info(user.getEmail());
 		logger.debug(user.getPassword());
-
-
 		if (userService.validateUsers(user.getEmail(), user.getPassword())) {
 			session.setAttribute("userEmail", user.getEmail());
 
 			User usr = userService.getUserByEmail(user.getEmail());
 
 			session.setAttribute("userRoleId", usr.getRole().getId());
+			if (usr.getId() == 1) {
+				return "admin/adminMenu";
+			}
 
 			/*model.addAttribute("user", new User());
 
 			model.addAttribute("users", userService.getUsers());
 			model.addAttribute("roles", roleService.getRoles());*/
-			return "menu";
+			return "registeredUser/home";
 		}
 
 

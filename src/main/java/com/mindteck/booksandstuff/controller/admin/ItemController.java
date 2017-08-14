@@ -1,4 +1,4 @@
-package com.mindteck.booksandstuff.controller;
+package com.mindteck.booksandstuff.controller.admin;
 
 import com.mindteck.booksandstuff.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;

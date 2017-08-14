@@ -5,7 +5,7 @@
   Time: 5:47 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@include file="template/header.jsp"%>
+<%@include file="../registeredUser/header.jsp"%>
 
 <div class="container">
     <table class="table">
@@ -39,6 +39,6 @@
         <a href="<c:url value="/admin/cdManager/cdForm"/>" class="btn btn-primary">Add CD</a>
 
     </div>
-    <%@include file="template/footer.jsp"%>
+    <%@include file="../registeredUser/footer.jsp"%>
 </div>
 

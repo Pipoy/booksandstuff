@@ -1,4 +1,4 @@
-package com.mindteck.booksandstuff.controller;
+package com.mindteck.booksandstuff.controller.loggedIn;
 
 import com.mindteck.booksandstuff.dto.BookDTO;
 import com.mindteck.booksandstuff.dto.CD.CDDTO;
@@ -17,14 +17,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by Philip Lozada on 7/25/2017.
+ * Created by Philip Lozada on 8/14/2017.
  */
-
 @Controller
-public class HomeController {
+public class HomeRegisteredController {
 
 
 	@Autowired
@@ -39,22 +40,19 @@ public class HomeController {
 	@Autowired
 	private CDService cdService;
 
-
-
-	@GetMapping("/home")
+	@GetMapping("/index")
 	public String home() {
-		return "anonymousUser/home";
+		return "registeredUser/home";
 	}
 
-	@GetMapping("items")
+	@GetMapping("/auth/items")
 	public String listItems(Model model) {
 		List<Item> items = itemService.getAllItems();
 		model.addAttribute("itemList", items);
 
-		return "anonymousUser/items";
+		return "registeredUser/items";
 	}
-
-	@GetMapping("/items/viewProduct/{productId}")
+	@GetMapping("/auth/items/viewProduct/{productId}")
 	public String viewProduct(@PathVariable String productId, Model model){
 		Item item = itemService.getProductById(Long.parseLong(productId));
 		Long categoryId = item.getCategory().getId();
@@ -70,54 +68,60 @@ public class HomeController {
 			model.addAttribute("publisher", publisher);
 			model.addAttribute("genre", genre);
 			model.addAttribute("category", category);
-			return "anonymousUser/viewBookDetail";
+			return "registeredUser/viewBookDetail";
 		}
 
 		if (categoryId == 2) {
 			CDDTO cddto = cdService.getCD(Long.parseLong(productId));
 			model.addAttribute("cd", cddto);
-			return "anonymousUser/viewCDDetail";
+			return "registeredUser/viewCDDetail";
 		}
 
 		if (categoryId == 3) {
 			GamesDTO gamesDTO = gameService.getGame(Long.parseLong(productId));
 			model.addAttribute("games", gamesDTO);
-			return "anonymousUser/viewGameDetail";
+			return "registeredUser/viewGameDetail";
 		}
 
-		return "anonymousUser/items";
+		return "registeredUser/items";
 
 	}
 
-	@GetMapping("/items/cds")
+	@GetMapping("/auth/items/cds")
 	public String viewCDs(Model model) {
 
 		List<CD> cds = cdService.getCDs();
 		model.addAttribute("cdList", cds);
 
-		return "anonymousUser/itemsCD";
+		return "registeredUser/itemsCD";
 	}
 
-	@GetMapping("/items/books")
+	@GetMapping("/auth/items/books")
 	public String viewBooks(Model model) {
 
 		List<Book> books = bookService.getBooks();
 		model.addAttribute("bookList", books);
 
-		return "anonymousUser/itemsBook";
+		return "registeredUser/itemsBook";
 	}
 
-	@GetMapping("/items/games")
+	@GetMapping("/auth/items/games")
 	public String viewGames(Model model) {
 
 		List<Games> games = gameService.getGames();
 		model.addAttribute("gameList", games);
 
-		return "anonymousUser/itemsGames";
+		return "registeredUser/itemsGames";
 	}
 
+	@GetMapping("/auth/logout")
+	public String logout(Model model, HttpServletRequest request) {
+		System.out.println("logout()");
+		HttpSession httpSession = request.getSession();
+		httpSession.invalidate();
+		return "redirect:/home";
 
-
+	}
 
 
 }

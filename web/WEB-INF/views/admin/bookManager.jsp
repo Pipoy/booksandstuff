@@ -14,7 +14,7 @@
     <%--</head>--%>
 
     <%--<body>--%>
-        <%@include file="template/header.jsp"%>
+        <%@include file="../registeredUser/header.jsp"%>
 <%--<a href="<c:url value="/logout" />">Logout</a>--%>
 
 
@@ -84,7 +84,7 @@
 
 
 
-<%@include file="template/footer.jsp"%>
+<%@include file="../registeredUser/footer.jsp"%>
         <%--<script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>--%>
         <%--<script src="webjars/jquery/2.1.4/jquery.min.js"></script>--%>
     <%--</body>--%>

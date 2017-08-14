@@ -1,7 +1,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="template/header.jsp"%>
-<script src="/resources/js/sortTable.js"></script>
+<%@include file="../template/header.jsp"%>
+<script src="/js/sortTable.js"></script>
 
 
 
@@ -50,4 +50,4 @@
 
 
 
-<%@include file="template/footer.jsp"%>
+<%@include file="../template/footer.jsp"%>

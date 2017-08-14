@@ -7,7 +7,7 @@
   Time: 6:18 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@include file="template/header.jsp"%>
+<%@include file="../template/header.jsp"%>
 <style type="text/css"> .error {color: red;} </style>
 <div class="container">
     <fieldset>
@@ -68,7 +68,7 @@
 
     </fieldset>
 
-    <%@include file="template/footer.jsp"%>
+    <%@include file="../template/footer.jsp"%>
 </div>
 
 

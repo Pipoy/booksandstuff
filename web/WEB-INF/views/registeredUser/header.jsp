@@ -45,41 +45,31 @@
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="/home">Home</a></li>
-                                <li><a href="<c:url value="/items"/>">All Products</a></li>
-
+                                <li class="active"><a href="/index">Home</a></li>
+                                <li><a href="<c:url value="/auth/items"/>">All Products</a></li>
                                 <%--<li><a href="#about">About</a></li>--%>
                                 <%--<li><a href="#contact">Contact</a></li>--%>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<c:url value="/items/books"/>">Books</a></li>
-                                        <li><a href="<c:url value="/items/cds"/>">CD</a></li>
-                                        <li><a href="<c:url value="/items/games"/>">Games</a></li>
-                                        <%--<li><a href="#">Books</a></li>--%>
-                                        <%--<li><a href="#">Games</a></li>--%>
-                                        <%--<li role="separator" class="divider"></li>--%>
-                                        <%--<li class="dropdown-header">Nav header</li>--%>
-                                        <%--<li><a href="#">Separated link</a></li>--%>
-                                        <%--<li><a href="#">One more separated link</a></li>--%>
+                                        <li><a href="<c:url value="/auth/items/books"/>">Books</a></li>
+                                        <li><a href="<c:url value="/auth/items/cds"/>">CD</a></li>
+                                        <li><a href="<c:url value="/auth/items/games"/>">Games</a></li>
                                     </ul>
 
                                 </li>
 
 
-
                             </ul>
 
+
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="/register">Register &nbsp &nbsp</a></li>
+                                <li><a href="/auth/logout">Logout &nbsp &nbsp</a></li>
                             </ul>
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="/">Login &nbsp &nbsp</a></li>
+                                <li><a href="/">${sessionScope["userEmail"]} &nbsp &nbsp</a></li>
                             </ul>
 
                         </div>
                     </div>
                 </nav>
-
-            </div>
-        </div>

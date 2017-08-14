@@ -1,12 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Pipoy
-  Date: 8/1/2017
-  Time: 9:26 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="template/header.jsp"%>
+<%@include file="../registeredUser/header.jsp"%>
 
 <div class="container-wrapper">
     <div class="container">
@@ -36,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <%@include file="template/footer.jsp"%>
+        <%@include file="../registeredUser/footer.jsp"%>
     </div>
 
 </div>

@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Pipoy
-  Date: 8/6/2017
-  Time: 5:46 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="template/header.jsp"%>
+<%@include file="../registeredUser/header.jsp"%>
 
 <div class="container-wrapper">
     <div class="container">
@@ -31,6 +25,6 @@
                 <button type="button" class="btn btn-warning">Add to Cart</button>
             </div>
         </div>
-        <%@include file="template/footer.jsp"%>
+        <%@include file="../registeredUser/footer.jsp"%>
     </div>
 </div>

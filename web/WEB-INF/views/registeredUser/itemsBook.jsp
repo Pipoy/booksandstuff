@@ -1,6 +1,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="template/header.jsp"%>
+<%@include file="../registeredUser/header.jsp"%>
 <script src="/resources/js/sortTable.js"></script>
 
 
@@ -33,7 +33,7 @@
                     <td>${book.name}</td>
                     <td>${book.category.name}</td>
                     <td>${book.price}</td>
-                    <td><a href="<spring:url value="/items/viewProduct/${book.id}"/> ">
+                    <td><a href="<spring:url value="/auth/items/viewProduct/${book.id}"/> ">
                         <span style="font-size: 150%" class="glyphicon glyphicon-info-sign" ></span></a>
                             <%--<button type=button class="btn btn-default btn-lg">--%>
                             <%--<span class="glyphicon glyphicon-info-sign" aria-hidden=true></span> Star--%>
@@ -50,4 +50,4 @@
 
 
 
-<%@include file="template/footer.jsp"%>
+<%@include file="../registeredUser/footer.jsp"%>

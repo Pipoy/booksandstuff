@@ -41,8 +41,9 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean validateUser(String email, String password) {
 		@SuppressWarnings("unchecked")
-		TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where email=:email");
+		TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where email=:email AND password=:password");
 		query.setParameter("email", email);
+		query.setParameter("password", password);
 		List<User> users = query.getResultList();
 		if (users.size() > 0)
 			return true;

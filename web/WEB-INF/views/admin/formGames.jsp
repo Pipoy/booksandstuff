@@ -7,7 +7,7 @@
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="template/header.jsp"%>
+<%@include file="../template/header.jsp"%>
 <div class="container">
     <fieldset>
         <form:form action="saveGame" modelAttribute="game" method="post" enctype="multipart/form-data">
@@ -58,5 +58,5 @@
         </form:form>
     </fieldset>
 
-    <%@include file="template/footer.jsp"%>
+    <%@include file="../template/footer.jsp"%>
 </div>

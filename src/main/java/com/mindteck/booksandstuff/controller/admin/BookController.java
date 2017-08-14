@@ -1,6 +1,6 @@
-package com.mindteck.booksandstuff.controller;
+package com.mindteck.booksandstuff.controller.admin;
 
-import com.mindteck.booksandstuff.dao.book.BookDAO;
+import com.mindteck.booksandstuff.controller.LoginController;
 import com.mindteck.booksandstuff.dto.BookDTO;
 import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.service.CategoryService;
@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -63,8 +62,8 @@ public class BookController {
 		model.addAttribute("booksList", books);
 
 		Long roleId = (Long) session.getAttribute("userRoleId");
-		if (roleId == 1) {
-			return "bookManager";
+		if (roleId==1) {
+			return "admin/bookManager";
 		}else {
 			return "redirect:/";
 		}
@@ -72,7 +71,7 @@ public class BookController {
 	}
 
 	@GetMapping("/bookForm")
-	public String showBookForm(Model model) {
+	public String showBookForm(Model model, HttpSession session) {
 		Book book1 = new Book();
 
 		model.addAttribute("bookShow", book1);
@@ -82,46 +81,61 @@ public class BookController {
 		model.addAttribute("publishersShow", publisherService.getPublishers());
 		model.addAttribute("categoriesShow", categoryService.getCategories());
 
+		Long roleId = (Long) session.getAttribute("userRoleId");
+		if (roleId==1) {
+			return "admin/formBook";
+		}else {
+			return "redirect:/";
+		}
 
 
-		return "formBook";
+
+
 
 
 	}
 
 	@PostMapping("saveBook")
-	public String saveBook(@ModelAttribute("bookShow") @Valid BookDTO book, BindingResult result, Model model, HttpServletRequest request) {
+	public String saveBook(@ModelAttribute("bookShow") @Valid BookDTO book,
+	                       BindingResult result, Model model, HttpServletRequest request,
+	                       HttpSession session) {
 
-		if (result.hasErrors()) {
-			model.addAttribute("authorsShow", authorService.getAuthors());
-			model.addAttribute("genresShow", genreService.getGenres());
-			model.addAttribute("publishersShow", publisherService.getPublishers());
-			model.addAttribute("categoriesShow", categoryService.getCategories());
+		Long roleId = (Long) session.getAttribute("userRoleId");
+		if (roleId==1) {
+			if (result.hasErrors()) {
+				model.addAttribute("authorsShow", authorService.getAuthors());
+				model.addAttribute("genresShow", genreService.getGenres());
+				model.addAttribute("publishersShow", publisherService.getPublishers());
+				model.addAttribute("categoriesShow", categoryService.getCategories());
 
-			return "formBook";
-		}
-
-		bookService.add(book);
-
-		System.out.println("id:" + book.getId() +
-				"name: " + book.getName() +
-				"author: " + book.getAuthor() +
-				"publisher: " + book.getPublisher() +
-				"isbn" + book.getIsbn());
-		MultipartFile productImage = book.getProductImage();
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		path = Paths.get(rootDirectory + "\\resources\\images\\" + book.getId() + ".png");
-
-		if (productImage != null && !productImage.isEmpty()) {
-			try {
-				productImage.transferTo(new File(path.toString()));
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new RuntimeException("Product image saving failed!,", e);
-
-
+				return "admin/formBook";
 			}
+			bookService.add(book);
+
+			MultipartFile productImage = book.getProductImage();
+			String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+			path = Paths.get(rootDirectory + "\\resources\\images\\" + book.getId() + ".png");
+
+			if (productImage != null && !productImage.isEmpty()) {
+				try {
+					productImage.transferTo(new File(path.toString()));
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw new RuntimeException("Product image saving failed!,", e);
+
+
+				}
+			}
+
+		}else {
+			return "redirect:/";
 		}
+
+
+
+
+
+
 
 
 
@@ -130,19 +144,31 @@ public class BookController {
 
 
 	@GetMapping("/updateFormBook")
-	public String updateForm(@RequestParam("bookId") String theId, Model model) {
+	public String updateForm(@RequestParam("bookId") String theId, Model model, HttpSession session) {
 
-		BookDTO book = bookService.getBook(Long.parseLong(theId));
+		Long roleId = (Long) session.getAttribute("userRoleId");
+		if (roleId==1) {
+			BookDTO book = bookService.getBook(Long.parseLong(theId));
 
-		model.addAttribute("authorsShow",  authorService.getAuthors());
-		model.addAttribute("genresShow", genreService.getGenres());
-		model.addAttribute("publishersShow", publisherService.getPublishers());
-		model.addAttribute("categoriesShow", categoryService.getCategories());
-		model.addAttribute("bookShow", book);
+			model.addAttribute("authorsShow",  authorService.getAuthors());
+			model.addAttribute("genresShow", genreService.getGenres());
+			model.addAttribute("publishersShow", publisherService.getPublishers());
+			model.addAttribute("categoriesShow", categoryService.getCategories());
+			model.addAttribute("bookShow", book);
 
 
-		return "formBook";
+			return "admin/formBook";
+		}else {
+			return "redirect:/";
+		}
+
+
+
+
+
 	}
+
+
 
 }
 

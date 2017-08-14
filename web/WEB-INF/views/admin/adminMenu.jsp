@@ -1,4 +1,4 @@
-<%@include file="template/header.jsp"%>
+<%@include file="../registeredUser/header.jsp"%>
 <div class="container">
     <h1>Admin Menu</h1>
     <hr>
@@ -11,5 +11,5 @@
 </div>
 
 <footer class="panel-footer">
-    <%@include file="template/footer.jsp"%>
+    <%@include file="../registeredUser/footer.jsp"%>
 </footer>
