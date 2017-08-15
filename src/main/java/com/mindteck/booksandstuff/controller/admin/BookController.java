@@ -87,12 +87,6 @@ public class BookController {
 		}else {
 			return "redirect:/";
 		}
-
-
-
-
-
-
 	}
 
 	@PostMapping("saveBook")
@@ -122,23 +116,12 @@ public class BookController {
 				} catch (Exception e) {
 					e.printStackTrace();
 					throw new RuntimeException("Product image saving failed!,", e);
-
-
 				}
 			}
 
 		}else {
 			return "redirect:/";
 		}
-
-
-
-
-
-
-
-
-
 		return "redirect:/admin/bookManager/";
 	}
 
@@ -161,14 +144,7 @@ public class BookController {
 		}else {
 			return "redirect:/";
 		}
-
-
-
-
-
 	}
-
-
 
 }
 

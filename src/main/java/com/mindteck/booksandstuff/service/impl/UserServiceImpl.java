@@ -37,7 +37,8 @@ public class UserServiceImpl implements UserService{
 			user.setEmail(userDTO.getEmail());
 			user.setName(userDTO.getName());
 			user.setPassword(userDTO.getPassword());
-			user.setRole(roleDao.getRole(Long.parseLong(userDTO.getRole())));
+			//user.setRole(roleDao.getRole(Long.parseLong(userDTO.getRole())));
+			user.setRole(roleDao.getRole(2L));
 		//}
 
 

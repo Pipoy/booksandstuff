@@ -63,23 +63,15 @@
                                         <%--<li><a href="#">Separated link</a></li>--%>
                                         <%--<li><a href="#">One more separated link</a></li>--%>
                                     </ul>
-
                                 </li>
-
-
-
                             </ul>
 
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="/register">Register &nbsp &nbsp</a></li>
+                                <li><a href="/registerForm">Register &nbsp &nbsp</a></li>
                             </ul>
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="/">Login &nbsp &nbsp</a></li>
+                                <li><a href="/loginForm">Login &nbsp &nbsp</a></li>
                             </ul>
-
                         </div>
                     </div>
                 </nav>
-
-            </div>
-        </div>

@@ -28,7 +28,7 @@
 
                 <h4><strong>Price</strong> : ${games.price} USD</h4>
                 <a class="btn btn-default" href="<c:url value="/items/games"/>">Back</a>
-                <button type="button" class="btn btn-warning">Login to Buy</button>
+                <a class="btn btn-warning" href="<c:url value="/loginForm"/>">Login To Buy</a>
             </div>
         </div>
         <%@include file="../template/footer.jsp"%>

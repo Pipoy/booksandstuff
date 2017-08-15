@@ -1,5 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
+
 <%--<%@ page language="java" contentType="text/html;--%>
 <%--charset=ISO-8859-1"--%>
 <%--pageEncoding="ISO-8859-1"%>--%>
@@ -7,10 +7,10 @@
 <%--<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>--%>
 <%--<!DOCTYPE html>--%>
 <%@include file="template/header.jsp"%>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Login Form</title>
+<%--<html>--%>
+    <%--<head>--%>
+        <%--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">--%>
+        <%--<title>Login Form</title>--%>
 
         <style type="text/css">
 
@@ -50,7 +50,7 @@
             &:focus {
                  z-index: 2;
 
-            }
+             }
 
             input[type="text"] {
                 margin-bottom: -1px;
@@ -73,54 +73,58 @@
 
 
 
-    </head>
-    <body>
-       <div class="container">
-
-               <%--<fieldset>--%>
-                   <%--<legend>User Input From</legend>--%>
-                   <%--<form:form action="login" method="post" modelAttribute="user" cssClass="form-signin">--%>
-                       <%--<table>--%>
-                           <%--<tr>--%>
-                               <%--<td>Email</td>--%>
-                               <%--<td>--%>
-                                   <%--<form:input path="email" cssClass="form-control"/>--%>
-                                   <%--<form:errors path="email" cssClass="error" />--%>
-                               <%--</td>--%>
-                           <%--</tr>--%>
-                           <%--<tr>--%>
-                               <%--<td>Password</td>--%>
-                               <%--<td>--%>
-                                   <%--<form:input path="password" cssClass="form-control"/>--%>
-                               <%--</td>--%>
-                           <%--</tr--%>
-                               <%--<tr>--%>
-
-                           <%--<td><button type="submit" class="btn btn-lg btn-primary btn-block">Login</button></td>--%>
-                           <%--</tr>--%>
-                       <%--</table>--%>
-                   <%--</form:form>--%>
-               <%--</fieldset>--%>
+    <%--</head>--%>
+    <%--<body>--%>
+        <%--<div class="container">--%>
 
 
-                   <div class="wrapper">
-                       <fieldset>
-                           <form:form cssClass="form-signin"  action="login" method="post" modelAttribute="user">
-                               <h2 class="form-signin-heading">Please login</h2>
-                               <form:input type="text" cssClass="form-control"   name="username" placeholder="Email Address" required="" autofocus="" path="email" />
-                               <form:errors path="email" cssClass="error" />
-                               <form:input type="password" cssClass="form-control" name="password" placeholder="Password" required="" path="password"/>
+            <%--<fieldset>--%>
+                <%--<legend>User Input Form: ${sessionScope["userEmail"]}</legend>--%>
+                <%--<form:form action="login" method="post" modelAttribute="user">--%>
+                    <%--<form:hidden path="id" />--%>
+                    <%--<table>--%>
+                        <%--<tr>--%>
+                            <%--<td>Email</td>--%>
+                            <%--<td>--%>
+                                <%--<form:input path="email" />--%>
+                                <%--<form:errors path="email" cssClass="error" />--%>
+                            <%--</td>--%>
+                        <%--</tr>--%>
+                        <%--<tr>--%>
+                            <%--<td>Password</td>--%>
+                            <%--<td>--%>
+                                <%--<form:input path="password" />--%>
+                            <%--</td>--%>
+                        <%--</tr>--%>
+                        <%--<tr>--%>
+                            <%--<td><button type="submit">Submit</button></td>--%>
+                        <%--</tr>--%>
 
-                               <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-                           </form:form>
-                       </fieldset>
-                   </div>
+                    <%--</table>--%>
+                <%--</form:form>--%>
+            <%--</fieldset>--%>
 
 
-               <%@include file="template/footer.jsp"%>
+
+                <div class="wrapper">
+                    <fieldset>
+                        <form:form cssClass="form-signin" action="login" method="post" modelAttribute="user">
+                            <h2 class="form-signin-heading">Please login</h2>
+                            <div>
+                                <form:input type="text" cssClass="form-control"   name="username" placeholder="Email Address" required="" autofocus="" path="email" />
+                                <form:errors path="email" cssClass="error" />
+                            </div>
+                            <form:input type="password" cssClass="form-control" name="password" placeholder="Password" required="" path="password"/>
+
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                        </form:form>
+                    </fieldset>
+                </div>
 
 
-       </div>
-    </body>
+            <%@include file="template/footer.jsp"%>
+        <%--</div>--%>
 
-</html>
+    <%--</body>--%>
+
+<%--</html>--%>

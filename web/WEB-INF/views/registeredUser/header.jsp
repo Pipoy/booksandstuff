@@ -67,8 +67,12 @@
                                 <li><a href="/auth/logout">Logout &nbsp &nbsp</a></li>
                             </ul>
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="/">${sessionScope["userEmail"]} &nbsp &nbsp</a></li>
+                                <li><a href="/auth/userProfile">${sessionScope["userEmail"]} &nbsp &nbsp</a></li>
                             </ul>
+                            <ul class="nav navbar-nav pull-right">
+                                <li><a href="/auth/cart">Cart &nbsp &nbsp</a></li>
+                            </ul>
+
 
                         </div>
                     </div>

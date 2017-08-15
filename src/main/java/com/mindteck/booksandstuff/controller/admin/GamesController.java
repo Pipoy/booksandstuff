@@ -62,8 +62,6 @@ public class GamesController {
 
 	@GetMapping("/gameForm")
 	public String showGamesForm(Model model, HttpSession session){
-
-
 		Long roleId = (Long) session.getAttribute("userRoleId");
 		if (roleId==1) {
 			Games game = new Games();

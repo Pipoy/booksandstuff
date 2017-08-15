@@ -7,6 +7,7 @@ import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.enitities.cd.CD;
 import com.mindteck.booksandstuff.enitities.games.Games;
+import com.mindteck.booksandstuff.enitities.user.User;
 import com.mindteck.booksandstuff.service.ItemService;
 import com.mindteck.booksandstuff.service.book.BookService;
 import com.mindteck.booksandstuff.service.cd.CDService;
@@ -115,9 +116,4 @@ public class HomeController {
 
 		return "anonymousUser/itemsGames";
 	}
-
-
-
-
-
 }

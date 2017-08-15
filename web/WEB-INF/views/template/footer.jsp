@@ -7,7 +7,9 @@
 </div>
 
 </div><!-- /.container -->
+</body>
 
+</html>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

@@ -3,11 +3,13 @@ package com.mindteck.booksandstuff.controller.loggedIn;
 import com.mindteck.booksandstuff.dto.BookDTO;
 import com.mindteck.booksandstuff.dto.CD.CDDTO;
 import com.mindteck.booksandstuff.dto.Games.GamesDTO;
+import com.mindteck.booksandstuff.dto.UserDTO;
 import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.enitities.cd.CD;
 import com.mindteck.booksandstuff.enitities.games.Games;
 import com.mindteck.booksandstuff.service.ItemService;
+import com.mindteck.booksandstuff.service.UserService;
 import com.mindteck.booksandstuff.service.book.BookService;
 import com.mindteck.booksandstuff.service.cd.CDService;
 import com.mindteck.booksandstuff.service.games.GameService;
@@ -26,6 +28,9 @@ import java.util.List;
  */
 @Controller
 public class HomeRegisteredController {
+	@Autowired
+	private UserService userService;
+
 
 
 	@Autowired
@@ -120,6 +125,22 @@ public class HomeRegisteredController {
 		HttpSession httpSession = request.getSession();
 		httpSession.invalidate();
 		return "redirect:/home";
+
+	}
+
+	@GetMapping("/auth/userProfile")
+	public String viewUserProfile(Model model, HttpSession session) {
+		//model.addAttribute("user", userService.getUser((String) session.getAttribute("userId")));
+		//String uid = (String) session.getAttribute("userId");
+//		System.out.println(session.getAttribute("userId"));
+//		String uid = (String) session.getAttribute("userId");
+		UserDTO user = userService.getUser((String) session.getAttribute("userId"));
+
+		model.addAttribute("user", user);
+
+
+
+		return "registeredUser/profile";
 
 	}
 

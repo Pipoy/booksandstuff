@@ -27,15 +27,7 @@ public class UserController {
 	@Autowired
 	private RoleService roleService;
 
-	@GetMapping("/")
-	public String userForm(Locale locale, Model model) {
 
-		model.addAttribute("user", new User());
-		model.addAttribute("users", userService.getUsers());
-
-		return "loginForm";
-		//return "userForm";
-	}
 
 	@PostMapping("/saveUser")
 	public String saveUser(@ModelAttribute("user") @Valid UserDTO user, BindingResult result, Model model) {
@@ -44,14 +36,14 @@ public class UserController {
 
 			model.addAttribute("users", userService.getUsers());
 			model.addAttribute("roles", roleService.getRoles());
-			return "userForm";
+			return "/userForm";
 		}
 
 		System.out.println(user.getId()+" / "+user.getEmail()+" / "+user.getPassword());
 
 		userService.add(user);
 
-		return "redirect:/";
+		return "userForm";
 	}
 
 	@GetMapping("/getUser")
