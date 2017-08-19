@@ -1,5 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@include file="../registeredUser/header.jsp"%>
+<%@include file="../template/header.jsp"%>
 
 <script src="/resources/js/sortTable.js"></script>
 <div class="container-wrapper">
@@ -39,11 +39,6 @@
                     <td>${items.price}</td>
                     <td><a href="<spring:url value="/auth/items/viewProduct/${items.id}"/> ">
                         <span style="font-size: 150%" class="glyphicon glyphicon-info-sign" ></span></a>
-                            <%--<button type=button class="btn btn-default btn-lg">--%>
-                            <%--<span class="glyphicon glyphicon-info-sign" aria-hidden=true></span> Star--%>
-                            <%--</button>--%>
-
-
                     </td>
                 </tr>
             </c:forEach>

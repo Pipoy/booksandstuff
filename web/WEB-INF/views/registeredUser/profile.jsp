@@ -7,10 +7,12 @@
             <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th>session id</th>
             </tr>
             <tr>
                 <td>${user.name}</td>
                 <td>${user.email}</td>
+                <td> <%= session.getId() %></td>
             </tr>
 
 

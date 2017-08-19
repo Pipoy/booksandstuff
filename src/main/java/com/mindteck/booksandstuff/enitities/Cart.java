@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,21 +18,21 @@ public class Cart {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private String id;
 
 	private Long grandTotal;
 
 	@OneToMany
-	private Map<Long, CartItem> cartItems;
+	private List<CartItem> cartItems;
 
 	//public Cart(){}
 
 	public Cart() {
-		cartItems = new HashMap<>();
+		cartItems = new ArrayList<>();
 		grandTotal=0L;
 	}
 
-	public Cart(Long cartId) {
+	public Cart(String cartId) {
 		this();
 		this.id = cartId;
 	}
@@ -38,20 +40,49 @@ public class Cart {
 	public void addCartItem(CartItem item) {
 		Long productId = item.getItem().getId();
 
-		if(cartItems.containsKey(productId)){
-			CartItem existingItem = cartItems.get(productId);
+//		if(cartItems.containsKey(productId)){
+//			CartItem existingItem = cartItems.get(productId);
+//		}
+
+		for (CartItem ci : cartItems) {
+			if (ci.getItem().getId().equals(productId)) {
+				ci.setQuantity(ci.getQuantity() + 1);
+				ci.setTotalPrice(ci.getTotalPrice() * ci.getQuantity());
+			}else{
+				cartItems.add(item);
+			}
+		}
+
+		updateGrandTotal();
+	}
+
+	private void updateGrandTotal() {
+		grandTotal =0L;
+		for (CartItem ci : cartItems) {
+			grandTotal += ci.getTotalPrice();
 		}
 	}
 
+	public void removeCartItem(CartItem item) {
+		Long productId = item.getItem().getId();
+
+		for (CartItem ci : cartItems) {
+			if(ci.getItem().getId().equals(item.getItem().getId())){
+				cartItems.remove(ci);
+			}
+		}
+		updateGrandTotal();
+	}
 
 
 	//getters - setters
 
-	public Long getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -63,11 +94,11 @@ public class Cart {
 		this.grandTotal = grandTotal;
 	}
 
-	public Map<Long, CartItem> getCartItems() {
+	public List<CartItem> getCartItems() {
 		return cartItems;
 	}
 
-	public void setCartItems(Map<Long, CartItem> cartItems) {
+	public void setCartItems(List<CartItem> cartItems) {
 		this.cartItems = cartItems;
 	}
 }

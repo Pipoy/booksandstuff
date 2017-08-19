@@ -1,7 +1,11 @@
 package com.mindteck.booksandstuff.controller;
 
 import com.mindteck.booksandstuff.dto.UserDTO;
+import com.mindteck.booksandstuff.enitities.Cart;
+import com.mindteck.booksandstuff.enitities.CartItem;
+import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.enitities.user.User;
+import com.mindteck.booksandstuff.service.ItemService;
 import com.mindteck.booksandstuff.service.RoleService;
 import com.mindteck.booksandstuff.service.UserService;
 import org.apache.log4j.Logger;
@@ -31,18 +35,21 @@ public class LoginController {
 	@Autowired
 	private RoleService roleService;
 
-	@GetMapping("/loginForm")
-	public String userForm(Locale locale, Model model) {
+	@Autowired
+	private ItemService itemService;
 
+	@GetMapping("/loginForm")
+	public String userForm(Model model) {
+//
 		model.addAttribute("user", new User());
-		model.addAttribute("users", userService.getUsers());
+//		model.addAttribute("users", userService.getUsers());
 
 		return "loginForm";
 		//return "userForm";
 	}
 
 	@PostMapping("/login")
-	public String validateUser(@ModelAttribute("user") @Valid UserDTO user,
+	public String login(@ModelAttribute("user") @Valid UserDTO user,
 	                           BindingResult result,
 	                           Model model,
 	                           HttpSession session) {
@@ -51,7 +58,9 @@ public class LoginController {
 //		System.out.println(user.getPassword());
 
 		if (result.hasErrors()) {
-			return "redirect:/loginForm";
+//			model.addAttribute("user", new User());
+//			model.addAttribute("users", userService.getUsers());
+			return "/loginForm";
 		}
 
 		logger.info(user.getEmail());
@@ -60,9 +69,34 @@ public class LoginController {
 			session.setAttribute("userEmail", user.getEmail());
 
 			User usr = userService.getUserByEmail(user.getEmail());
+			//Cart sessionCart = cartService.createCart();
+
 
 			session.setAttribute("userRoleId", usr.getRole().getId());
 			session.setAttribute("userId", usr.getId().toString());
+			session.setAttribute("uid", usr.getRole().getId());
+			session.setAttribute("ssid", session.getId());
+
+			Cart uCart = new Cart();
+			uCart.setId((String) session.getAttribute("ssid"));
+
+
+			Item i = itemService.getProductById(1L);
+			CartItem ci = new CartItem();
+			ci.setItem(i);
+			ci.setQuantity(ci.getQuantity() + 1);
+			ci.setTotalPrice(i.getPrice() * ci.getQuantity());
+
+
+
+
+			uCart.getCartItems().add(ci);
+			session.setAttribute("sessionCart", uCart);
+
+			//session.setAttribute("sessionCart" sessionCart.getId());
+
+
+
 			if (usr.getId() == 1) {
 				return "admin/adminMenu";
 			}

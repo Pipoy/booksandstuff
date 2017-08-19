@@ -82,15 +82,11 @@ public class CDController {
 		}else {
 			return "redirect:/";
 		}
-
-
 	}
 
 	@PostMapping("saveCD")
 	public String saveCD(@ModelAttribute("cds") @Valid CDDTO cddto, BindingResult result,
 	                     Model model, HttpServletRequest request, HttpSession session){
-
-
 
 		Long roleId = (Long) session.getAttribute("userRoleId");
 		if (roleId==1) {
@@ -100,7 +96,6 @@ public class CDController {
 				model.addAttribute("producers", producerService.getProducers());
 				model.addAttribute("musicGenre", musicGenreService.getMusicGenres());
 				model.addAttribute("category", categoryService.getCategories());
-
 				return "admin/formCD";
 			}
 

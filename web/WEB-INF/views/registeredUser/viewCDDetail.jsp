@@ -23,8 +23,8 @@
                     <p><strong>Description</strong> : ${cd.description}</p>
 
                     <h4><strong>Price</strong> : ${cd.price} USD</h4>
-                    <a class="btn btn-default" href="<c:url value="/items/cds"/>">Back</a>
-                    <button type="button" class="btn btn-warning">Add to Cart</button>
+                    <a class="btn btn-default" href="<c:url value="/auth/items/cds"/>">Back</a>
+                    <a class="btn btn-warning" href="<c:url value="/auth/cart/${cd.id}"/>">Add to Cart</a>
 
                 </div>
             </div>

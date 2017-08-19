@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="../template/header.jsp"%>
+<%@include file="../registeredUser/header.jsp"%>
 
 <div class="container-wrapper">
     <div class="container">
@@ -31,6 +31,7 @@
 
                     <h4><strong>Price</strong> : ${cd.price} USD</h4>
                     <a class="btn btn-default" href="<c:url value="/items/cds"/>">Back</a>
+                    <%--<a class="btn btn-warning" href="<c:url value="/loginForm"/>">Login To Buy</a>--%>
                     <a class="btn btn-warning" href="<c:url value="/loginForm"/>">Login To Buy</a>
 
                 </div>

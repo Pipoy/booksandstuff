@@ -20,6 +20,7 @@ public class UserDTO {
 	@Email(message = "{user.email.invalid}")
 	private String email;
 
+	@Size(max = 12, min = 1, message = "{password.invalid}")
 	private String password;
 
 	private String Role;

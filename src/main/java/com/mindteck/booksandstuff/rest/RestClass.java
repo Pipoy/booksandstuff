@@ -1,15 +1,21 @@
 package com.mindteck.booksandstuff.rest;
 
 import com.mindteck.booksandstuff.dto.BookDTO;
+import com.mindteck.booksandstuff.dto.WishDTO;
 import com.mindteck.booksandstuff.enitities.user.Role;
 import com.mindteck.booksandstuff.enitities.user.User;
+import com.mindteck.booksandstuff.enitities.user.Wish;
 import com.mindteck.booksandstuff.rest.exception.MissingRequiredFieldsException;
 import com.mindteck.booksandstuff.service.UserService;
+import com.mindteck.booksandstuff.service.WishService;
 import com.mindteck.booksandstuff.service.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.ws.rs.Path;
+import java.util.List;
 
 /**
  * Created by Philip Lozada on 8/14/2017.
@@ -23,6 +29,9 @@ public class RestClass {
 
 	@Autowired
 	BookService bookService;
+
+	@Autowired
+	WishService wishService;
 
 	@RequestMapping(value="/rest/authenticate",method = RequestMethod.POST,headers="Accept=application/json")
 	public ResponseEntity<Role> getRole(@RequestBody User user)  {
@@ -55,8 +64,16 @@ public class RestClass {
 		} else {
 			return new ResponseEntity<>(book, HttpStatus.OK);
 		}
+	}
+	@RequestMapping(value = "/rest/getWishList/{userId}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseEntity<List<WishDTO>> getUserWL(@PathVariable("userId") long userId) {
+		List<WishDTO> wishes = wishService.getWishes(userId);
 
-
+		if (wishes == null) {
+			throw new MissingRequiredFieldsException("Missing fields");
+		}else{
+			return new ResponseEntity<>(wishes, HttpStatus.OK);
+		}
 
 	}
 

@@ -65,13 +65,41 @@
                                     </ul>
                                 </li>
                             </ul>
+                            <%
+                                if (session.getAttribute("uid") == null){
+                            %>
 
-                            <ul class="nav navbar-nav pull-right">
-                                <li><a href="/registerForm">Register &nbsp &nbsp</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav pull-right">
-                                <li><a href="/loginForm">Login &nbsp &nbsp</a></li>
-                            </ul>
+                                <ul class="nav navbar-nav pull-right">
+                                    <li><a href="/registerForm">Register &nbsp &nbsp</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav pull-right">
+                                    <li><a href="/loginForm">Login &nbsp &nbsp</a></li>
+                                </ul>
+
+                            <%
+                            } else{
+
+                            %>
+                                <ul class="nav navbar-nav pull-right">
+                                    <li><a href="/auth/logout">Logout &nbsp &nbsp</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav pull-right">
+                                    <li><a href="/auth/userProfile">${sessionScope["userEmail"]} &nbsp &nbsp</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav pull-right">
+                                    <li><a href="/auth/cart">Cart &nbsp &nbsp</a></li>
+                                </ul>
+                            <%
+                                }
+                            %>
+
+
+                            <%--<ul class="nav navbar-nav pull-right">--%>
+                            <%--<li><a href="/registerForm">Register &nbsp &nbsp</a></li>--%>
+                            <%--</ul>--%>
+                            <%--<ul class="nav navbar-nav pull-right">--%>
+                            <%--<li><a href="/loginForm">Login &nbsp &nbsp</a></li>--%>
+                            <%--</ul>--%>
                         </div>
                     </div>
                 </nav>

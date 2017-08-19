@@ -2,6 +2,7 @@ package com.mindteck.booksandstuff.dao;
 
 import com.mindteck.booksandstuff.enitities.user.Role;
 import com.mindteck.booksandstuff.enitities.user.User;
+import com.mindteck.booksandstuff.enitities.user.Wish;
 
 import java.util.List;
 
@@ -21,4 +22,7 @@ public interface UserDAO {
 
 	Role getRole(String email, String password);
 	Role getRole(String id);
+
+//	List<Wish> getWishList(Long userId);
+
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 /**
@@ -33,18 +34,30 @@ public class RegisterController {
 	}
 
 	@PostMapping("/validateRegistration")
-	public String validateRegistration(@ModelAttribute("user") @Valid UserDTO user, BindingResult result, Model model) {
+	public String validateRegistration(@ModelAttribute("user") @Valid UserDTO user, BindingResult result, Model model, HttpSession session) {
 		System.out.println(user.getId()+" / "+user.getEmail()+" / "+user.getPassword());
 		if (result.hasErrors()) {
 
-			model.addAttribute("user", new User());
 
 			return "anonymousUser/registerForm";
 		}
+		userService.add(user);
 
-		 userService.add(user);
 
-		return "anonymousUser/home";
+		User usr = userService.getUserByEmail(user.getEmail());
+		session.setAttribute("uid1", usr.getRole().getId());
+
+
+
+
+
+
+
+
+
+
+
+		return "anonymousUser/registerForm";
 	}
 
 }

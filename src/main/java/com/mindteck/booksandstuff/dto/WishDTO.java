@@ -4,8 +4,9 @@ package com.mindteck.booksandstuff.dto;
  * Created by Philip Lozada on 7/25/2017.
  */
 public class WishDTO {
-	String userId;
-	String bookId;
+	private Long id;
+	 private String userId;
+	private String itemId;
 
 	public String getUserId() {
 		return userId;
@@ -15,11 +16,19 @@ public class WishDTO {
 		this.userId = userId;
 	}
 
-	public String getBookId() {
-		return bookId;
+	public String getItemId() {
+		return itemId;
 	}
 
-	public void setBookId(String bookId) {
-		this.bookId = bookId;
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

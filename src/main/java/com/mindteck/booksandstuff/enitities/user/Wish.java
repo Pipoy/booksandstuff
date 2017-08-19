@@ -1,5 +1,6 @@
 package com.mindteck.booksandstuff.enitities.user;
 
+import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.enitities.cd.CD;
 import com.mindteck.booksandstuff.enitities.games.Games;
@@ -22,17 +23,21 @@ public class Wish {
 	@JoinColumn(name="userId")
 	private User user;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="bookId")
-	private Book book;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="bookId")
+//	private Book book;
+//
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="cdId")
+//	private CD cd;
+//
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="gameId")
+//	private Games games;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="cdId")
-	private CD cd;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="gameId")
-	private Games games;
+	@JoinColumn(name="itemId")
+	private Item item;
 
 
 
@@ -41,29 +46,40 @@ public class Wish {
 	private String status;
 	private Date wishRemoved;
 
-	public Games getGames() {
-		return games;
+
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	public Item getItem() {
+		return item;
 	}
 
-	public void setGames(Games games) {
-		this.games = games;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
-	public CD getCd() {
-		return cd;
-	}
-
-	public void setCd(CD cd) {
-		this.cd = cd;
-	}
-
-	public Book getBook() {
-		return book;
-	}
-
-	public void setBook(Book book) {
-		this.book = book;
-	}
+//		public Games getGames() {
+//		return games;
+//	}
+//
+//	public void setGames(Games games) {
+//		this.games = games;
+//	}
+//
+//	public CD getCd() {
+//		return cd;
+//	}
+//
+//	public void setCd(CD cd) {
+//		this.cd = cd;
+//	}
+//
+//	public Book getBook() {
+//		return book;
+//	}
+//
+//	public void setBook(Book book) {
+//		this.book = book;
+//	}
 
 
 	public Long getId() {

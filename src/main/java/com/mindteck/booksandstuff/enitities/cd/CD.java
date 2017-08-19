@@ -43,8 +43,8 @@ public class CD extends Item {
 		this.productImage = productImage;
 	}
 
-	@OneToMany(mappedBy = "cd")
-	private List<Wish> wish;
+//	@OneToMany(mappedBy = "cd")
+//	private List<Wish> wish;
 
 	public String getActive() {
 		return active;
@@ -88,11 +88,11 @@ public class CD extends Item {
 		this.producer = producer;
 	}
 
-	public List<Wish> getWish() {
-		return wish;
-	}
-
-	public void setWish(List<Wish> wish) {
-		this.wish = wish;
-	}
+//	public List<Wish> getWish() {
+//		return wish;
+//	}
+//
+//	public void setWish(List<Wish> wish) {
+//		this.wish = wish;
+//	}
 }

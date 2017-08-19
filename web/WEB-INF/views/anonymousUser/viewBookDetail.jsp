@@ -1,6 +1,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="../template/header.jsp"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@include file="../registeredUser/header.jsp"%>
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
@@ -16,19 +17,15 @@
 
                 <div class="col-md-5">
                     <h3>${product.name}</h3>
-
                     <p><strong>Genre</strong> : ${genre}</p>
                     <p><strong>Category</strong> : ${category}</p>
                     <p><strong>Author</strong> : ${author}</p>
                     <p><strong>ISBN</strong> : ${product.isbn}</p>
                     <p><strong>Publisher</strong> : ${publisher}</p>
                     <p><strong>Description</strong> : ${product.description}</p>
-
                     <h4><strong>Price</strong> : ${product.price} USD</h4>
                     <a class="btn btn-default" href="<c:url value="/items/books"/>">Back</a>
                     <a class="btn btn-warning" href="<c:url value="/loginForm"/>">Login To Buy</a>
-                    <%--<button type="button" class="btn btn-warning">Login to Buy</button>--%>
-
                 </div>
             </div>
         </div>

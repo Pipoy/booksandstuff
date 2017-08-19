@@ -3,6 +3,7 @@ package com.mindteck.booksandstuff.dao.impl;
 import com.mindteck.booksandstuff.dao.UserDAO;
 import com.mindteck.booksandstuff.enitities.user.Role;
 import com.mindteck.booksandstuff.enitities.user.User;
+import com.mindteck.booksandstuff.enitities.user.Wish;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -76,6 +77,8 @@ public class UserDAOImpl implements UserDAO {
 		return  user.getRole();
 	}
 
+
+
 	@Override
 	public User getUserByEmail(String email) {
 		@SuppressWarnings("unchecked")
@@ -85,4 +88,21 @@ public class UserDAOImpl implements UserDAO {
 
 		return user;
 	}
+
+//	@Override
+//	public List<Wish> getWishList(Long userId) {
+//		@SuppressWarnings("unchecked")
+//		TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where id=:id");
+//		query.setParameter("id", userId);
+//		User user = query.getSingleResult();
+//		List<Wish> wishes = user.getUserWishList();
+//		return wishes;
+//
+//	}
+
+
+
+
+
+
 }

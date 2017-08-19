@@ -1,5 +1,6 @@
 package com.mindteck.booksandstuff.config;
 
+import com.mindteck.booksandstuff.enitities.Cart;
 import com.mindteck.booksandstuff.enitities.CartItem;
 import com.mindteck.booksandstuff.enitities.Category;
 import com.mindteck.booksandstuff.enitities.Item;
@@ -80,7 +81,7 @@ public class AppConfig {
 				Book.class, Author.class, Genre.class, Publisher.class,
 				CD.class, Artist.class, MusicGenre.class, Producer.class,
 				Games.class, GameGenre.class, Developer.class, Platform.class,
-				CartItem.class);
+				CartItem.class, Cart.class);
 		// factoryBean.setAnnotatedClasses(Role.class);
 		return factoryBean;
 	}

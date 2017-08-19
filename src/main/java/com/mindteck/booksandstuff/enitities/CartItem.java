@@ -64,4 +64,5 @@ public class CartItem{
 	public void setTotalPrice(Long totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
 }

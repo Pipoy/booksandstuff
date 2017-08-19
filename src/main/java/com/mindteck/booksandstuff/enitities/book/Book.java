@@ -33,16 +33,16 @@ public class Book extends Item {
 	@Transient
 	private MultipartFile productImage;
 
-	@OneToMany(mappedBy = "book")
-	private List<Wish> wishes;
-
-	public List<Wish> getWishes() {
-		return wishes;
-	}
-
-	public void setWishes(List<Wish> wishes) {
-		this.wishes = wishes;
-	}
+//	@OneToMany(mappedBy = "book")
+//	private List<Wish> wishes;
+//
+//	public List<Wish> getWishes() {
+//		return wishes;
+//	}
+//
+//	public void setWishes(List<Wish> wishes) {
+//		this.wishes = wishes;
+//	}
 
 	public String getActive() {
 		return active;

@@ -21,8 +21,9 @@
                 <p><strong>Description</strong> : ${games.description}</p>
 
                 <h4><strong>Price</strong> : ${games.price} USD</h4>
-                <a class="btn btn-default" href="<c:url value="/items/games"/>">Back</a>
-                <button type="button" class="btn btn-warning">Add to Cart</button>
+                <a class="btn btn-default" href="<c:url value="/auth/items/games"/>">Back</a>
+                <%--<button type="button" class="btn btn-warning">Add to Cart</button>--%>
+                <a class="btn btn-warning" href="<c:url value="/auth/cart/${games.id}"/>">Add to Cart</a>
             </div>
         </div>
         <%@include file="../registeredUser/footer.jsp"%>

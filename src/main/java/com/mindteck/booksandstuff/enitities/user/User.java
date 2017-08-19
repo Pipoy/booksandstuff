@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Email;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Philip Lozada on 7/24/2017.
@@ -21,10 +22,13 @@ public class User {
 	private String name;
 
 	@Column(name = "EMAIL", unique = true)
-	@Email(message = "{user.email.invalid}")
+//	@Email(message = "{user.email.invalid}")
 	private String email;
 
 	private String password;
+
+	//
+	//private Order orderHistory
 
 	@ManyToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="roleId")
@@ -33,6 +37,14 @@ public class User {
 
 	@OneToMany(mappedBy = "user")
 	private List<Wish> userWishList;
+
+	public List<Wish> getUserWishList() {
+		return userWishList;
+	}
+
+	public void setUserWishList(List<Wish> userWishList) {
+		this.userWishList = userWishList;
+	}
 
 	public Long getId() {
 		return id;
@@ -74,11 +86,4 @@ public class User {
 		this.role = role;
 	}
 
-	public List<Wish> getUserWishList() {
-		return userWishList;
-	}
-
-	public void setUserWishList(List<Wish> userWishList) {
-		this.userWishList = userWishList;
-	}
 }
