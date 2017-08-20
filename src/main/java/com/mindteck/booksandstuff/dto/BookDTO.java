@@ -1,6 +1,9 @@
 package com.mindteck.booksandstuff.dto;
 
+import com.mindteck.booksandstuff.enitities.Category;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * Created by Philip Lozada on 7/25/2017.
@@ -24,6 +27,9 @@ public class BookDTO {
 	private String Category;
 	private String categoryName;
 
+
+
+
 	private String Genre;
 	private String genreName;
 
@@ -39,6 +45,7 @@ public class BookDTO {
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
 	}
+
 
 	public String getCategoryName() {
 		return categoryName;

@@ -1,5 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@include file="../template/header.jsp"%>
+<%@include file="../registeredUser/header.jsp"%>
 
 <script src="/resources/js/sortTable.js"></script>
 <div class="container-wrapper">

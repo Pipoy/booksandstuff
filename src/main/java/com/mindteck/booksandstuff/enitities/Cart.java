@@ -56,7 +56,7 @@ public class Cart {
 		updateGrandTotal();
 	}
 
-	private void updateGrandTotal() {
+	public void updateGrandTotal() {
 		grandTotal =0L;
 		for (CartItem ci : cartItems) {
 			grandTotal += ci.getTotalPrice();
@@ -74,6 +74,10 @@ public class Cart {
 		updateGrandTotal();
 	}
 
+
+	public int cartItemSize() {
+		return cartItems.size();
+	}
 
 	//getters - setters
 

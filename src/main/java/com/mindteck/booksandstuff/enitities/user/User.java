@@ -1,5 +1,7 @@
 package com.mindteck.booksandstuff.enitities.user;
 
+import com.mindteck.booksandstuff.enitities.Item;
+import com.mindteck.booksandstuff.enitities.Order;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -27,16 +29,38 @@ public class User {
 
 	private String password;
 
-	//
-	//private Order orderHistory
+
 
 	@ManyToOne(cascade= CascadeType.ALL)
 	@JoinColumn(name="roleId")
 	private Role role;
 
+	@OneToMany(mappedBy = "user")
+	private List<Order> orders;
+
+
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Item> orderHistory;
+
+
 
 	@OneToMany(mappedBy = "user")
 	private List<Wish> userWishList;
+
+
+
+
+	//getters setters
+
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
 	public List<Wish> getUserWishList() {
 		return userWishList;
@@ -84,6 +108,14 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public List<Item> getOrderHistory() {
+		return orderHistory;
+	}
+
+	public void setOrderHistory(List<Item> orderHistory) {
+		this.orderHistory = orderHistory;
 	}
 
 }

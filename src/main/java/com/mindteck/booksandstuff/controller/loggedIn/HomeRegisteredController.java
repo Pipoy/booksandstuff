@@ -4,10 +4,13 @@ import com.mindteck.booksandstuff.dto.BookDTO;
 import com.mindteck.booksandstuff.dto.CD.CDDTO;
 import com.mindteck.booksandstuff.dto.Games.GamesDTO;
 import com.mindteck.booksandstuff.dto.UserDTO;
+import com.mindteck.booksandstuff.enitities.Category;
 import com.mindteck.booksandstuff.enitities.Item;
+import com.mindteck.booksandstuff.enitities.Order;
 import com.mindteck.booksandstuff.enitities.book.Book;
 import com.mindteck.booksandstuff.enitities.cd.CD;
 import com.mindteck.booksandstuff.enitities.games.Games;
+import com.mindteck.booksandstuff.enitities.user.User;
 import com.mindteck.booksandstuff.service.ItemService;
 import com.mindteck.booksandstuff.service.UserService;
 import com.mindteck.booksandstuff.service.book.BookService;
@@ -61,6 +64,36 @@ public class HomeRegisteredController {
 	public String viewProduct(@PathVariable String productId, Model model){
 		Item item = itemService.getProductById(Long.parseLong(productId));
 		Long categoryId = item.getCategory().getId();
+//		List<Category> c = item.getCategories();
+
+//		for(int i =0; i <c.size(); i++) {
+//			if(c.get(i).getId() == 1){
+//				BookDTO book = bookService.getBook(Long.parseLong(productId));
+//				String author = book.getAuthorName();
+//				String publisher = book.getPublisherName();
+//				String genre = book.getGenreName();
+//				String category = book.getCategoryName();
+//				model.addAttribute("product", book);
+//				model.addAttribute("author", author);
+//				model.addAttribute("publisher", publisher);
+//				model.addAttribute("genre", genre);
+//				model.addAttribute("category", category);
+//				return "registeredUser/viewBookDetail";
+//			}
+//			if (c.get(i).getId() == 2) {
+//				CDDTO cddto = cdService.getCD(Long.parseLong(productId));
+//				model.addAttribute("cd", cddto);
+//				return "registeredUser/viewCDDetail";
+//			}
+//			if(c.get(i).getId() == 3){
+//				GamesDTO gamesDTO = gameService.getGame(Long.parseLong(productId));
+//				model.addAttribute("games", gamesDTO);
+//				return "registeredUser/viewGameDetail";
+//			}
+//		}
+
+
+
 
 		if (categoryId == 1) {
 			BookDTO book = bookService.getBook(Long.parseLong(productId));
@@ -135,7 +168,21 @@ public class HomeRegisteredController {
 //		System.out.println(session.getAttribute("userId"));
 //		String uid = (String) session.getAttribute("userId");
 		UserDTO user = userService.getUser((String) session.getAttribute("userId"));
+//		User usr = (User) session.getAttribute("currentUser");
+		List<Item> items = user.getOrderHistory();
 
+
+		List<Order> orders = user.getOrdersList();
+//		for (Order i : orders) {
+//			System.out.println(i.getItem().getName());
+//
+//		}
+
+
+
+
+		model.addAttribute("itemsH", items);
+		model.addAttribute("itemsX", orders);
 		model.addAttribute("user", user);
 
 

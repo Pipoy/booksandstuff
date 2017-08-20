@@ -74,26 +74,30 @@ public class LoginController {
 
 			session.setAttribute("userRoleId", usr.getRole().getId());
 			session.setAttribute("userId", usr.getId().toString());
+			session.setAttribute("userId2", usr.getId());
 			session.setAttribute("uid", usr.getRole().getId());
 			session.setAttribute("ssid", session.getId());
+			session.setAttribute("orderHistory", usr.getOrderHistory());
+			session.setAttribute("userEmail", usr.getEmail());
 
 			Cart uCart = new Cart();
 			uCart.setId((String) session.getAttribute("ssid"));
 
 
-			Item i = itemService.getProductById(1L);
-			CartItem ci = new CartItem();
-			ci.setItem(i);
-			ci.setQuantity(ci.getQuantity() + 1);
-			ci.setTotalPrice(i.getPrice() * ci.getQuantity());
+//			Item i = itemService.getProductById(1L);
+//			CartItem ci = new CartItem();
+//			ci.setItem(i);
+//			ci.setQuantity(ci.getQuantity() + 1);
+//			ci.setTotalPrice(i.getPrice() * ci.getQuantity());
 
 
 
 
-			uCart.getCartItems().add(ci);
+//			uCart.getCartItems().add(ci);
 			session.setAttribute("sessionCart", uCart);
 
-			//session.setAttribute("sessionCart" sessionCart.getId());
+
+			session.setAttribute("grandTotal", uCart.getGrandTotal());
 
 
 

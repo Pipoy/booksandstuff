@@ -7,6 +7,7 @@ import com.mindteck.booksandstuff.enitities.user.Wish;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -22,10 +23,11 @@ public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessionFactory;
 
 
+
 	@Override
 	public void add(User user) {
 		if(user.getId()!=null){
-			sessionFactory.getCurrentSession().save(user);}
+			sessionFactory.getCurrentSession().saveOrUpdate(user);}
 		else{
 			sessionFactory.getCurrentSession().merge(user);}
 
@@ -88,6 +90,8 @@ public class UserDAOImpl implements UserDAO {
 
 		return user;
 	}
+
+
 
 //	@Override
 //	public List<Wish> getWishList(Long userId) {

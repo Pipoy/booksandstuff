@@ -1,9 +1,6 @@
 package com.mindteck.booksandstuff.enitities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -20,6 +17,8 @@ public class Category {
 
 	@OneToMany(mappedBy = "category")
 	private List<Item> item;
+
+
 
 	public Long getId() {
 		return id;

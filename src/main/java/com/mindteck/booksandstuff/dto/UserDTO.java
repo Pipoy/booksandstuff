@@ -1,5 +1,7 @@
 package com.mindteck.booksandstuff.dto;
 
+import com.mindteck.booksandstuff.enitities.Item;
+import com.mindteck.booksandstuff.enitities.Order;
 import com.mindteck.booksandstuff.enitities.user.Wish;
 import org.hibernate.validator.constraints.Email;
 
@@ -25,7 +27,22 @@ public class UserDTO {
 
 	private String Role;
 
+	private List<Order> ordersList;
+
+	private List<Item> orderHistory;
+
+
 	private List<Wish> wishes;
+
+	 ///////////////////////
+
+	public List<Order> getOrdersList() {
+		return ordersList;
+	}
+
+	public void setOrdersList(List<Order> ordersList) {
+		this.ordersList = ordersList;
+	}
 
 	public List<Wish> getWishes() {
 		return wishes;
@@ -74,6 +91,19 @@ public class UserDTO {
 	public void setRole(String role) {
 		Role = role;
 	}
+
+	public List<Item> getOrderHistory() {
+		return orderHistory;
+	}
+
+	public void setOrderHistory(List<Item> orderHistory) {
+		this.orderHistory = orderHistory;
+	}
+
+	public void addItemToOH(Item item) {
+		this.getOrderHistory().add(item);
+	}
+
 }
 
 
