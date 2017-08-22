@@ -1,7 +1,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@include file="../registeredUser/header.jsp"%>
+<%@include file="../template/header.jsp"%>
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">

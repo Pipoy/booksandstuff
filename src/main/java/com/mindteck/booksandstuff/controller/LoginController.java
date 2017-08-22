@@ -54,12 +54,7 @@ public class LoginController {
 	                           Model model,
 	                           HttpSession session) {
 
-//		System.out.println(user.getEmail());
-//		System.out.println(user.getPassword());
-
 		if (result.hasErrors()) {
-//			model.addAttribute("user", new User());
-//			model.addAttribute("users", userService.getUsers());
 			return "/loginForm";
 		}
 
@@ -69,7 +64,6 @@ public class LoginController {
 			session.setAttribute("userEmail", user.getEmail());
 
 			User usr = userService.getUserByEmail(user.getEmail());
-			//Cart sessionCart = cartService.createCart();
 
 
 			session.setAttribute("userRoleId", usr.getRole().getId());
@@ -80,35 +74,15 @@ public class LoginController {
 			session.setAttribute("orderHistory", usr.getOrderHistory());
 			session.setAttribute("userEmail", usr.getEmail());
 
-			Cart uCart = new Cart();
-			uCart.setId((String) session.getAttribute("ssid"));
+			Cart userCart = new Cart();
+			userCart.setId((String) session.getAttribute("ssid"));
 
+			session.setAttribute("sessionCart", userCart);
+			session.setAttribute("grandTotal", userCart.getGrandTotal());
 
-//			Item i = itemService.getProductById(1L);
-//			CartItem ci = new CartItem();
-//			ci.setItem(i);
-//			ci.setQuantity(ci.getQuantity() + 1);
-//			ci.setTotalPrice(i.getPrice() * ci.getQuantity());
-
-
-
-
-//			uCart.getCartItems().add(ci);
-			session.setAttribute("sessionCart", uCart);
-
-
-			session.setAttribute("grandTotal", uCart.getGrandTotal());
-
-
-
-			if (usr.getId() == 1) {
+			if (usr.getRole().getId() == 1) {
 				return "admin/adminMenu";
 			}
-
-			/*model.addAttribute("user", new User());
-
-			model.addAttribute("users", userService.getUsers());
-			model.addAttribute("roles", roleService.getRoles());*/
 			return "registeredUser/home";
 		}
 

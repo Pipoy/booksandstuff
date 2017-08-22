@@ -1,6 +1,7 @@
 package com.mindteck.booksandstuff.controller.loggedIn;
 
 import com.mindteck.booksandstuff.dto.OrderDTO;
+import com.mindteck.booksandstuff.dto.OrderFormDTO;
 import com.mindteck.booksandstuff.dto.UserDTO;
 import com.mindteck.booksandstuff.enitities.Cart;
 import com.mindteck.booksandstuff.enitities.CartItem;
@@ -61,7 +62,6 @@ public class CartController {
 			return "registeredUser/emptyCart";
 		}
 
-
 		cart.updateGrandTotal();
 
 		return "registeredUser/cart";
@@ -83,11 +83,6 @@ public class CartController {
 
 		cart.getCartItems().add(ci);
 		cart.updateGrandTotal();
-
-		//cart.removeCartItem();
-
-
-
 		return "redirect:/auth/cart";
 
 	}
@@ -103,16 +98,6 @@ public class CartController {
 		Cart cart = (Cart) session.getAttribute("sessionCart");
 		System.out.println(cart.getCartItems().size());
 
-
-//
-//		for (CartItem ci1 : cart.getCartItems()) {
-//			System.out.println(ci.getItem().getName());
-//
-//			if (ci.getItem().getId() == item.getId()) {
-//				cart.getCartItems().remove(ci1);
-//			}
-//		}
-
 		int ii =0;
 		for(int i=0; i<cart.getCartItems().size(); i++) {
 			if (cart.getCartItems().get(i).getId() == item.getId()) {
@@ -125,7 +110,6 @@ public class CartController {
 			return "registeredUser/emptyCart";
 		}
 
-//		return "redirect:/auth/cart";
 		return "redirect:/auth/cart";
 
 
@@ -137,8 +121,6 @@ public class CartController {
 		Cart cart = (Cart) session.getAttribute("sessionCart");
 		cart.getCartItems().clear();
 		session.setAttribute("sessionCart", cart);
-
-
 		return "registeredUser/cart";
 	}
 
@@ -146,9 +128,10 @@ public class CartController {
 	@GetMapping("auth/cart/orderForm")
 	public String submitCart(Model model, HttpSession session) {
 		Cart cart = (Cart) session.getAttribute("sessionCart");
+		OrderFormDTO orderFormDTO = new OrderFormDTO();
 
+		model.addAttribute("orderForm", orderFormDTO);
 		model.addAttribute("cart", cart);
-
 
 		return "registeredUser/orderForm";
 	}
@@ -164,18 +147,12 @@ public class CartController {
 
 		String roleId =  (String) session.getAttribute("userId");
 
-		UserDTO usr1 = userService.getUser(roleId);
+		UserDTO currentUser = userService.getUser(roleId);
 
-//		System.out.println("name" + usr.getName());
-//		System.out.println("email" + usr.getEmail());
-//
 		List<Item> orderHistory = new ArrayList<>();
-
-
 
 		for (CartItem item : cart.getCartItems()) {
 			orderHistory.add(itemService.getProductById(item.getItem().getId()));
-
 		}
 
 		Long uid = (Long) session.getAttribute("userId2");
@@ -183,40 +160,11 @@ public class CartController {
 		List<Item> i = userService.getUser(uid.toString()).getOrderHistory();
 		orderHistory.addAll(i);
 
-		usr1.setOrderHistory(orderHistory);
+		currentUser .setOrderHistory(orderHistory);
 
-//		String email = (String) session.getAttribute("userEmail");
-//		System.out.println(email);
-//
-//		List<Order> orders = new ArrayList<>();
-//		for (CartItem cartItem : cart.getCartItems()) {
-//			Order o = new Order();
-//			o.setId(1L);
-//			o.setItem(itemService.getProductById(cartItem.getItem().getId()));
-//			o.setUser(userService.getUserByEmail(email));
-//			orders.add(o);
-////			orderService.addOrder(orders);
-//		}
-//		for (Order order : orders) {
-//			orderService.addOrder(order);
-//		}
-
-
-//		orderService.addOrder(orders);
-//		Long uid = (Long) session.getAttribute("userId2");
-
-
-//		usr.setId(uid);
-//		usr.setOrdersList(orders);
-//
-//
-
-
-		userService.add(usr1);
-
+		userService.add( currentUser );
 
 		return "registeredUser/orderSummary";
-
 	}
 
 	@GetMapping("auth/cart/finish")
@@ -228,18 +176,4 @@ public class CartController {
 		return "registeredUser/home";
 
 	}
-
-//	private void clearCart() {
-//		Cart cart = (Cart) cs.getAttribute("sessionCart");
-//		cart.getCartItems().clear();
-//	}
-
-
-//
-//	@GetMapping("auth/cart/{productId}")
-//	public String updateQuantity(@PathVariable String productId){
-//		return "redirect:/auth/cart";
-//
-//	}
-
 }

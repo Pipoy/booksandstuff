@@ -30,39 +30,16 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	@Override
 	public void add(UserDTO userDTO) {
-		System.out.println("Inside add userdto userserviceimpl");
-		System.out.println(userDTO.getId());
-		System.out.println((userDTO.getEmail()));
-
 
 		User user = new User();
-		//if(userDTO.getId()!= null) {
-		user.setId(userDTO.getId());
 
+		user.setId(userDTO.getId());
 		user.setEmail(userDTO.getEmail());
 		user.setName(userDTO.getName());
 		user.setPassword(userDTO.getPassword());
-		//user.setRole(roleDao.getRole(Long.parseLong(userDTO.getRole())));
-		user.setRole(roleDao.getRole(2L));
-
-//		if (userDTO.getOrderHistory().isEmpty() || userDTO.getOrderHistory() == null) {
-//			System.out.println("empty list");
-//
-//		}
+		user.setRole(roleDao.getRole(Long.parseLong(userDTO.getRole())));
 		user.setOrderHistory(userDTO.getOrderHistory());
-
-
-//
-//		for (Item i : userDTO.getOrderHistory()) {
-//			System.out.println(i.getName());
-//
-//			user.getOrderHistory().add(i);
-//		}
-//		//}
-
-
 		userDao.add(user);
-
 	}
 
 	@Transactional(readOnly = true)
@@ -89,14 +66,7 @@ public class UserServiceImpl implements UserService{
 		userDto.setPassword(user.getPassword());
 
 		List<Item> i = user.getOrderHistory();
-//		for (Item item : i) {
-//			userDto.getOrderHistory().add(item);
-//		}
-
 		userDto.setOrderHistory(i);
-
-
-
 		return userDto;
 	}
 
@@ -114,8 +84,6 @@ public class UserServiceImpl implements UserService{
 		return userDao.getRole(id);
 	}
 
-
-
 	@Transactional
 	@Override
 	public User getUserByEmail(String email) {
@@ -123,10 +91,4 @@ public class UserServiceImpl implements UserService{
 		return user;
 	}
 
-//
-//	public void updateOrderHistory(List<Item> orderHistory, String userId) {
-//		userDao.getUser(Long.parseLong(userId));
-//
-//
-//	}
 }

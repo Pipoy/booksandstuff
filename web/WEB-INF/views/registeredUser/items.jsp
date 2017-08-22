@@ -30,9 +30,6 @@
             </thead>
             <c:forEach var="items" items="${itemList}">
                 <tr>
-                        <%--<td><div class="col-md-6">--%>
-                        <%--<img src="/resources/images/homebookphoto.jpg"  alt="image" style="width:50%; height: 150px"/>--%>
-                        <%--</div></td>--%>
                     <td><img src="<c:url value="/resources/images/${items.id}.png"/>"  alt="image" style="width: 100px; height: 150px"/></td>
                     <td>${items.name}</td>
                     <td>${items.category.name}</td>
@@ -42,7 +39,5 @@
                     </td>
                 </tr>
             </c:forEach>
-
         </table>
-
 <%@include file="../registeredUser/footer.jsp"%>

@@ -18,11 +18,8 @@ import java.util.List;
 @Repository
 public class UserDAOImpl implements UserDAO {
 
-
 	@Autowired
 	private SessionFactory sessionFactory;
-
-
 
 	@Override
 	public void add(User user) {
@@ -30,8 +27,6 @@ public class UserDAOImpl implements UserDAO {
 			sessionFactory.getCurrentSession().saveOrUpdate(user);}
 		else{
 			sessionFactory.getCurrentSession().merge(user);}
-
-
 	}
 
 	@Override

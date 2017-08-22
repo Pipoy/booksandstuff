@@ -20,8 +20,6 @@ public class AdminController {
 	@GetMapping("/adminMenu")
 	private String adminMenu(HttpSession session){
 
-
-
 		Long roleId = (Long) session.getAttribute("userRoleId");
 		if (roleId==1) {
 			return "admin/adminMenu";

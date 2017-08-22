@@ -1,9 +1,6 @@
 package com.mindteck.booksandstuff.enitities;
 
-import com.mindteck.booksandstuff.enitities.user.User;
-
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Philip Lozada on 7/25/2017.
@@ -18,23 +15,11 @@ public class Item {
 	@GeneratedValue
 	private Long id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Category category;
 
 	private String name;
 	private Long price;
-
-
-//	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	private List<Category> categories;
-//
-//	public List<Category> getCategories() {
-//		return categories;
-//	}
-//
-//	public void setCategories(List<Category> categories) {
-//		this.categories = categories;
-//	}
 
 	public Long getId() {
 		return id;

@@ -36,26 +36,15 @@ public class RegisterController {
 	@PostMapping("/validateRegistration")
 	public String validateRegistration(@ModelAttribute("user") @Valid UserDTO user, BindingResult result, Model model, HttpSession session) {
 		System.out.println(user.getId()+" / "+user.getEmail()+" / "+user.getPassword());
+
 		if (result.hasErrors()) {
-
-
 			return "anonymousUser/registerForm";
 		}
+		user.setRole("2");
 		userService.add(user);
-
 
 		User usr = userService.getUserByEmail(user.getEmail());
 		session.setAttribute("uid1", usr.getRole().getId());
-
-
-
-
-
-
-
-
-
-
 
 		return "anonymousUser/registerForm";
 	}

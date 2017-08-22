@@ -101,9 +101,9 @@
             <%--</table>--%>
             <%--</form:form>--%>
             <%--</fieldset>--%>
-                <%
-                    if (session.getAttribute("uid1") == null){
-                %>
+            <%
+                if (session.getAttribute("uid1") == null){
+            %>
 
 
 
@@ -114,34 +114,32 @@
                         <h2 class="form-signin-heading">Registration Page</h2>
 
 
-
-
-                            <form:input type="text" cssClass="form-control"     placeholder="Name" required="" autofocus="" path="name" />
-                            <form:errors path="name" cssClass="error"/>
-                            <form:input type="text" cssClass="form-control"  placeholder="Email Address" required="" autofocus="" path="email" />
-                            <form:errors path="email" cssClass="error" />
-                            <form:input type="password" cssClass="form-control"  placeholder="Password" required="" path="password"/>
-                            <form:errors path="password" cssClass="error" />
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                        <form:input type="text" cssClass="form-control"     placeholder="Name" required="" autofocus="" path="name" />
+                        <form:errors path="name" cssClass="error"/>
+                        <form:input type="text" cssClass="form-control"  placeholder="Email Address" required="" autofocus="" path="email" />
+                        <form:errors path="email" cssClass="error" />
+                        <form:input type="password" cssClass="form-control"  placeholder="Password" required="" path="password"/>
+                        <form:errors path="password" cssClass="error" />
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
 
 
                     </form:form>
                 </fieldset>
             </div>
 
-                <%
-                }else{
-                %>
-                <h2 class="form-signin-heading">Account Created Successfully!</h2>
-                <h1 class="form-signin-heading">Please Login</h1> <span> <a class="btn btn-lg btn-primary" href="<c:url value="/loginForm"/>">Login</a></span>
+            <%
+            }else{
+            %>
+            <h2 class="form-signin-heading">Account Created Successfully!</h2>
+            <h1 class="form-signin-heading">Please Login</h1> <span> <a class="btn btn-lg btn-primary" href="<c:url value="/loginForm"/>">Login</a></span>
 
-                <%
-                    }
-                %>
+            <%
+                }
+            %>
 
 
 
-                <%@include file="../template/footer.jsp"%>
+            <%@include file="../template/footer.jsp"%>
 
 
         </div>

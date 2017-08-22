@@ -104,8 +104,6 @@ public class BookController {
 
 				return "admin/formBook";
 			}
-			bookService.add(book);
-
 			MultipartFile productImage = book.getProductImage();
 			String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 			path = Paths.get(rootDirectory + "\\resources\\images\\" + book.getId() + ".png");
@@ -118,6 +116,9 @@ public class BookController {
 					throw new RuntimeException("Product image saving failed!,", e);
 				}
 			}
+			bookService.add(book);
+
+
 
 		}else {
 			return "redirect:/";

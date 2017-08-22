@@ -33,6 +33,7 @@ charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
         </style>
     </head>
     <body>
+
         <fieldset>
             <legend>User Input Form: ${sessionScope["userEmail"]}</legend>
             <form:form action="saveUser" method="post" modelAttribute="user">
@@ -74,13 +75,15 @@ charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Role</th>
                     <th>Link</th>
                 </tr>
                 <c:forEach items="${users}" var="user">
                     <tr>
                         <td>${user.name}</td>
                         <td>${user.email}</td>
-                        <td><a href="getUser?id=${user.id}"> Edit</a></td>
+                        <td>${user.role.name}</td>
+                        <td><a href="/admin/userManager/getUser?id=${user.id}"> Edit</a></td>
                     </tr>
                 </c:forEach>
 

@@ -40,7 +40,7 @@ public class User {
 
 
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Item> orderHistory;
 
 

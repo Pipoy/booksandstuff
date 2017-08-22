@@ -34,7 +34,6 @@ public class UserDTO {
 
 	private List<Wish> wishes;
 
-	 ///////////////////////
 
 	public List<Order> getOrdersList() {
 		return ordersList;
@@ -91,6 +90,8 @@ public class UserDTO {
 	public void setRole(String role) {
 		Role = role;
 	}
+
+
 
 	public List<Item> getOrderHistory() {
 		return orderHistory;

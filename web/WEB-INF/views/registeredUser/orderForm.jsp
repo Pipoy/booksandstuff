@@ -4,6 +4,24 @@
 
 <div class="container">
     <h1>Order Form</h1>
+    <fieldset>
+        <form:form modelAttribute="orderForm">
+            <table class="table">
+                <tr>
+                    <td>City</td>
+                    <td><form:input path="city"/></td>
+                </tr>
+                <tr>
+                    <td>Street</td>
+                    <td><form:input path="street"/></td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td><form:input path="state"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </fieldset>
 
     <a class="btn btn-warning" href="/auth/cart/orderSummary">Place Order</a>
     <h3>Total Price: $${cart.grandTotal} </h3>
