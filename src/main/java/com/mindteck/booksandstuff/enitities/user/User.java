@@ -2,6 +2,8 @@ package com.mindteck.booksandstuff.enitities.user;
 
 import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.enitities.Order;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -35,15 +37,23 @@ public class User {
 	@JoinColumn(name="roleId")
 	private Role role;
 
-	@OneToMany(mappedBy = "user")
-	private List<Order> orders;
 
 
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Item> orderHistory;
 
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
+	private List<Order> orders;
 
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
 	@OneToMany(mappedBy = "user")
 	private List<Wish> userWishList;
@@ -54,13 +64,7 @@ public class User {
 	//getters setters
 
 
-	public List<Order> getOrders() {
-		return orders;
-	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
 
 	public List<Wish> getUserWishList() {
 		return userWishList;

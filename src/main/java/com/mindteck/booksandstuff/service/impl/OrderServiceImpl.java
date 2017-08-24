@@ -4,6 +4,7 @@ import com.mindteck.booksandstuff.dao.OrderDAO;
 import com.mindteck.booksandstuff.dao.UserDAO;
 import com.mindteck.booksandstuff.dao.item.ItemDAO;
 import com.mindteck.booksandstuff.dto.OrderDTO;
+import com.mindteck.booksandstuff.enitities.Item;
 import com.mindteck.booksandstuff.enitities.Order;
 import com.mindteck.booksandstuff.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,12 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void addOrder(OrderDTO orderDTO) {
 		Order order = new Order();
-		order.setId(orderDTO.getId());
-		order.setItem(itemDAO.getItem((orderDTO.getItem().getId())));
-		order.setUser(userDAO.getUser((orderDTO.getUser().getId())));
+//		order.setId(orderDTO.getId());
+		//order.setItem(itemDAO.getItem((orderDTO.getItem().getId())));
+		for (Item i : orderDTO.getOrderItems()) {
+			order.getItem().add(i);
+		}
+//		order.setUser(userDAO.getUser((orderDTO.getUser().getId())));
 
 		orderDAO.addOrder(order);
 
@@ -48,18 +52,38 @@ public class OrderServiceImpl implements OrderService {
 
 	@Transactional
 	@Override
-	public List<OrderDTO> getOrders(Long userId) {
+	public List<Order> getOrders(Long userId) {
 		List<Order> orders = orderDAO.getUsersOrders(userId);
 
-		List<OrderDTO> orderDTOS = new ArrayList<>();
-		for (Order o : orders) {
-			OrderDTO odto = new OrderDTO();
-			odto.setId((o.getItem().getId()));
-			odto.setItem(o.getItem());
-			odto.setUser(o.getUser());
 
-		}
-
-		return orderDTOS;
+		return orders;
 	}
+
+	@Transactional
+	@Override
+	public List<Order> getOrderByOrderId(Long orderID) {
+		List<Order> orders = orderDAO.getOrderByOrderId(orderID);
+		return orders;
+	}
+
+//	@Transactional
+//	@Override
+//	public List<OrderDTO> getOrders(Long userId) {
+//		List<Order> orders = orderDAO.getUsersOrders(userId);
+//
+//		List<OrderDTO> orderDTOS = new ArrayList<>();
+//		for (Order o : orders) {
+//			OrderDTO odto = new OrderDTO();
+//
+//			for (Item i : o.getItem()) {
+//				odto.getOrderItems().add(i);
+//			}
+//			odto.setId(o.getId());
+//			odto.setUser(o.getUsers());
+//			orderDTOS.add(odto);
+//
+//		}
+//
+//		return orderDTOS;
+//	}
 }

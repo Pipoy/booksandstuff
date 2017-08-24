@@ -33,7 +33,7 @@ charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
         </style>
     </head>
     <body>
-
+        <td><a href="/adminMenu/">Admin Menu</a></td>
         <fieldset>
             <legend>User Input Form: ${sessionScope["userEmail"]}</legend>
             <form:form action="saveUser" method="post" modelAttribute="user">

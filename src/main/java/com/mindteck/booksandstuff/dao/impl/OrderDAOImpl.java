@@ -23,7 +23,7 @@ public class OrderDAOImpl implements OrderDAO {
 
 	@Override
 	public void addOrder(Order order) {
-		sessionFactory.getCurrentSession().saveOrUpdate(order);
+		sessionFactory.getCurrentSession().save(order);
 	}
 
 	@Override
@@ -34,10 +34,21 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public List<Order> getUsersOrders(Long userId) {
 		@SuppressWarnings("unchecked")
-		TypedQuery<Order> query = sessionFactory.getCurrentSession().createQuery("from Order where user.id=:id");
+		TypedQuery<Order> query = sessionFactory.getCurrentSession().createQuery("from Order where users.id=:id");
 		query.setParameter("id", userId);
 //		User user = query.getSingleResult();
 		List<Order> orders = query.getResultList();
+		return orders;
+	}
+
+	@Override
+	public List<Order> getOrderByOrderId(Long orderId) {
+		@SuppressWarnings("unchecked")
+		TypedQuery<Order> query = sessionFactory.getCurrentSession().createQuery("from Order where id=:id");
+		query.setParameter("id", orderId);
+//		User user = query.getSingleResult();
+		List<Order> orders = query.getResultList();
+
 		return orders;
 	}
 }

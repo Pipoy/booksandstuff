@@ -13,4 +13,6 @@ public interface OrderDAO {
 	void update(Order order);
 
 	List<Order> getUsersOrders(Long userId);
+
+	List<Order> getOrderByOrderId(Long orderId);
 }

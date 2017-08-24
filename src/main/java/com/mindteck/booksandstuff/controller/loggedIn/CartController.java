@@ -1,5 +1,6 @@
 package com.mindteck.booksandstuff.controller.loggedIn;
 
+import com.mindteck.booksandstuff.dto.CreditCardDTO;
 import com.mindteck.booksandstuff.dto.OrderDTO;
 import com.mindteck.booksandstuff.dto.OrderFormDTO;
 import com.mindteck.booksandstuff.dto.UserDTO;
@@ -137,6 +138,17 @@ public class CartController {
 	}
 
 
+	@GetMapping("auth/cart/creditCardForm")
+	public String creditCardForm(Model model) {
+		CreditCardDTO creditCardDTO = new CreditCardDTO();
+
+		model.addAttribute("creditCardForm", creditCardDTO);
+
+		return "registeredUser/creditCardForm";
+
+	}
+
+
 	@GetMapping("auth/cart/orderSummary")
 	public String submitOrder(HttpSession session, Model model) {
 		Cart cart = (Cart) session.getAttribute("sessionCart");
@@ -146,23 +158,51 @@ public class CartController {
 
 
 		String roleId =  (String) session.getAttribute("userId");
-
-		UserDTO currentUser = userService.getUser(roleId);
-
-		List<Item> orderHistory = new ArrayList<>();
-
-		for (CartItem item : cart.getCartItems()) {
-			orderHistory.add(itemService.getProductById(item.getItem().getId()));
-		}
+		String email =  (String) session.getAttribute("userEmail");
 
 		Long uid = (Long) session.getAttribute("userId2");
 
-		List<Item> i = userService.getUser(uid.toString()).getOrderHistory();
-		orderHistory.addAll(i);
+		UserDTO currentUser = userService.getUser(roleId);
 
-		currentUser .setOrderHistory(orderHistory);
 
-		userService.add( currentUser );
+		List<Item> orderHistory = new ArrayList<>();
+		List<Order> u = new ArrayList<>();
+
+
+		Order order = new Order();
+		order.setUsers(userService.getUserByEmail(email));
+
+
+
+
+		List<Item> c = new ArrayList<>();
+
+		for (CartItem item : cart.getCartItems()) {
+//			order.getOrderItems().add(itemService.getProductById(item.getItem().getId()));
+			c.add(itemService.getProductById(item.getItem().getId()));
+
+
+
+
+
+//			orderHistory.add(itemService.getProductById(item.getItem().getId()));
+		}
+//
+//		currentUser.setOrdersList(u);
+
+		order.setItem(c);
+		order.setTotalPrice(cart.getGrandTotal());
+		orderService.addOrder(order);
+
+
+		List<Order> i = userService.getUser(uid.toString()).getOrdersList();
+
+
+//		List<Item> i = userService.getUser(uid.toString()).getOrderHistory();
+//		orderHistory.addAll(i);
+//		currentUser.setOrderHistory(orderHistory);
+//
+//		userService.add( currentUser );
 
 		return "registeredUser/orderSummary";
 	}

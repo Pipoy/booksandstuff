@@ -6,14 +6,13 @@ import com.mindteck.booksandstuff.enitities.user.User;
 import java.util.List;
 
 /**
- * Created by Philip Lozada on 8/20/2017.
+ * Created by Philip Lozada on 8/24/2017.
  */
-public class OrderDTO {
+public class OrderHistoryDTO {
+
 	private Long id;
 	private User user;
-	private List<Item> orderItems;
-
-
+	private Item orderItems;
 
 	public Long getId() {
 		return id;
@@ -31,11 +30,11 @@ public class OrderDTO {
 		this.user = user;
 	}
 
-	public List<Item> getOrderItems() {
+	public Item getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(List<Item> orderItems) {
+	public void setOrderItems(Item orderItems) {
 		this.orderItems = orderItems;
 	}
 }

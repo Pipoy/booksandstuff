@@ -27,7 +27,7 @@
                     <h4><strong>Price</strong> : ${product.price} USD</h4>
                     <a class="btn btn-default" href="<c:url value="/auth/items/books"/>">Back</a>
                     <a class="btn btn-warning" href="<c:url value="/auth/cart/${product.id}"/>">Add to Cart</a>
-                    <button class="btn btn-default" id="MyButton${product.id}">Add to WishList</button>
+                    <%--<button class="btn btn-default" id="MyButton${product.id}">Add to WishList</button>--%>
 
 
 

@@ -1,3 +1,5 @@
+
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="../registeredUser/header.jsp"%>
 
@@ -18,28 +20,60 @@
         </table>
     </div>
     <legend>Order History</legend>
-    <table class="table table-striped table-hover" style="width:100%" id="myTable1">
-        <thead>
-            <tr class="bg-success">
-                <th></th>
-                <th>Item</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th></th>
-            </tr>
-        </thead>
-        <c:forEach var="items" items="${itemsH}">
-            <tr>
-                <td><img src="<c:url value="/resources/images/${items.id}.png"/>"  alt="image" style="width: 100px; height: 150px"/></td>
-                <td><span style="font-weight: bold">${items.name}</span></td>
-                <td>${items.category.name}</td>
-                <td>${items.price}</td>
-                <td><a href="<spring:url value="/auth/items/viewProduct/${items.id}"/> ">
-                    <span style="font-size: 150%" class="glyphicon glyphicon-info-sign" ></span></a>
 
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+
+
+    <c:forEach var="order" items="${orders}">
+        <span>
+            <h3><a href="<spring:url value="/auth/userProfile/${order.id}"/> ">Order ID ${order.id} </a></h3>
+        <h5>Total Price:${order.totalPrice}</h5>
+    </span>
+        <%--<table class="table table-striped table-hover" style="width:100%" >--%>
+        <%--<thead>--%>
+        <%--<tr class="bg-success">--%>
+        <%--<th>Order#${order.id}</th>--%>
+        <%--<th>Item</th>--%>
+        <%--<th>Category</th>--%>
+        <%--<th>Price</th>--%>
+        <%--<th></th>--%>
+        <%--</tr>--%>
+        <%--</thead>--%>
+        <%--<c:forEach var="item" items="${orderItem}">--%>
+        <%--<tr>--%>
+        <%--<td></td>--%>
+        <%--<td>${item.name}</td>--%>
+        <%--<td>${item.category.name}</td>--%>
+        <%--<td>${item.price}</td>--%>
+        <%--</tr>--%>
+
+        <%--</c:forEach>--%>
+        <%--</table>--%>
+        <%--<h3>Total Price: ${order.totalPrice}</h3>--%>
+        <hr>
+    </c:forEach>
+
+    <%--<table class="table table-striped table-hover" style="width:100%" id="myTable1">--%>
+    <%--<thead>--%>
+    <%--<tr class="bg-success">--%>
+    <%--<th></th>--%>
+    <%--<th>Item</th>--%>
+    <%--<th>Category</th>--%>
+    <%--<th>Price</th>--%>
+    <%--<th></th>--%>
+    <%--</tr>--%>
+    <%--</thead>--%>
+    <%--<c:forEach var="items" items="${itemsH}">--%>
+    <%--<tr>--%>
+    <%--<td><img src="<c:url value="/resources/images/${items.id}.png"/>"  alt="image" style="width: 100px; height: 150px"/></td>--%>
+    <%--<td><span style="font-weight: bold">${items.name}</span></td>--%>
+    <%--<td>${items.category.name}</td>--%>
+    <%--<td>${items.price}</td>--%>
+    <%--<td><a href="<spring:url value="/auth/items/viewProduct/${items.id}"/> ">--%>
+    <%--<span style="font-size: 150%" class="glyphicon glyphicon-info-sign" ></span></a>--%>
+
+    <%--</td>--%>
+    <%--</tr>--%>
+    <%--</c:forEach>--%>
+    <%--</table>--%>
 </fieldset>
 <%@include file="../registeredUser/footer.jsp"%>

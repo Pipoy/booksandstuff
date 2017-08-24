@@ -23,7 +23,7 @@
         </form:form>
     </fieldset>
 
-    <a class="btn btn-warning" href="/auth/cart/orderSummary">Place Order</a>
+    <a class="btn btn-warning" href="/auth/cart/creditCardForm">Next: Payment </a>
     <h3>Total Price: $${cart.grandTotal} </h3>
 
 

@@ -4,6 +4,7 @@ import com.mindteck.booksandstuff.dao.RoleDAO;
 import com.mindteck.booksandstuff.dao.UserDAO;
 import com.mindteck.booksandstuff.dto.UserDTO;
 import com.mindteck.booksandstuff.enitities.Item;
+import com.mindteck.booksandstuff.enitities.Order;
 import com.mindteck.booksandstuff.enitities.user.Role;
 import com.mindteck.booksandstuff.enitities.user.User;
 import com.mindteck.booksandstuff.service.UserService;
@@ -39,6 +40,7 @@ public class UserServiceImpl implements UserService{
 		user.setPassword(userDTO.getPassword());
 		user.setRole(roleDao.getRole(Long.parseLong(userDTO.getRole())));
 		user.setOrderHistory(userDTO.getOrderHistory());
+		user.setOrders(userDTO.getOrdersList());
 		userDao.add(user);
 	}
 
@@ -67,6 +69,11 @@ public class UserServiceImpl implements UserService{
 
 		List<Item> i = user.getOrderHistory();
 		userDto.setOrderHistory(i);
+
+		List<Order> o = user.getOrders();
+		userDto.setOrdersList(o);
+
+
 		return userDto;
 	}
 

@@ -3,12 +3,12 @@
 <%@include file="../template/header.jsp"%>
 
 
-<script src="/js/sortTable.js"></script>
+<script src="/resources/js/sortTable.js"></script>
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
             <h1>All products</h1>
-            <p class="lead">Check out hte products now!</p>
+            <p class="lead">Check out the items!</p>
         </div>
 
 

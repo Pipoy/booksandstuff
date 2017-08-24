@@ -1,29 +1,43 @@
 package com.mindteck.booksandstuff.enitities;
 
 import com.mindteck.booksandstuff.enitities.user.User;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Philip Lozada on 8/20/2017.
  */
 
 @Entity
+@Table(name = "Orders")
 public class Order {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "OID")
+	@Column(name = "OrderID")
 	private Long id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	private User user;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Item item;
+	@ManyToOne
+	private User users;
 
 
-	private String someData;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
+	private List<Item> item;
+
+	private Long totalPrice;
+
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	//getters - setters
 
 	public Long getId() {
 		return id;
@@ -33,21 +47,21 @@ public class Order {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
 
-	public Item getItem() {
+	public List<Item> getItem() {
 		return item;
 	}
 
-	public void setItem(Item item) {
+	public void setItem(List<Item> item) {
 		this.item = item;
 	}
 
+	public User getUsers() {
+		return users;
+	}
 
+	public void setUsers(User users) {
+		this.users = users;
+	}
 }
