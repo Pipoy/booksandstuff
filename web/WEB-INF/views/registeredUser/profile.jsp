@@ -22,12 +22,29 @@
     <legend>Order History</legend>
 
 
+    <div class="container">
+        <table class="table table-striped table-hover" style="width:100%" id="myTable">
 
-    <c:forEach var="order" items="${orders}">
-        <span>
-            <h3><a href="<spring:url value="/auth/userProfile/${order.id}"/> ">Order ID ${order.id} </a></h3>
-        <h5>Total Price:${order.totalPrice}</h5>
-    </span>
+
+            <tr>
+                <th>Order Id</th>
+                <th>Date of Purchase</th>
+                <th>Total Price</th>
+            </tr>
+            <c:forEach var="order" items="${orders}">
+            <tr>
+                <td><a href="<spring:url value="/auth/userProfile/${order.id}"/> ">Order # ${order.id} </a></td>
+                <td>${order.dateOfPurchase}</td>
+                <td>${order.totalPrice}</td>
+            </tr>
+            </c:forEach>
+        </table>
+    </div>
+
+        <%--<h3></h3>--%>
+        <%--<h5>Total Price:${order.totalPrice}</h5>--%>
+        <%--<h5>Date of Purchase: ${order.dateOfPurchase}</h5>--%>
+
         <%--<table class="table table-striped table-hover" style="width:100%" >--%>
         <%--<thead>--%>
         <%--<tr class="bg-success">--%>
@@ -49,8 +66,8 @@
         <%--</c:forEach>--%>
         <%--</table>--%>
         <%--<h3>Total Price: ${order.totalPrice}</h3>--%>
-        <hr>
-    </c:forEach>
+    <hr>
+
 
     <%--<table class="table table-striped table-hover" style="width:100%" id="myTable1">--%>
     <%--<thead>--%>
